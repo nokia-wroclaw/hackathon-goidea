@@ -25,11 +25,14 @@ func (this *ApiController) Ideas() {
 
 	var ideas []*models.Idea
 
-	table := o.QueryTable("idea")
+	//table := o.QueryTable("idea")
 	for key, value := range request.Filtering {
-		table.Filter(key, value)
+		o.QueryTable("idea").Filter(key,value).All(&ideas)
+		//table.Filter(key, value).All(&ideas)
 	}
-	table.All(&ideas)
+	//table.All(&ideas)
+
+	//o.QueryTable("idea").Filter("title","ALA").All(&ideas)
 
 	//log.Fatal(ideas)
 
