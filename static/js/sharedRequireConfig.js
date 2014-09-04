@@ -2,9 +2,9 @@ define([], function() {
   "use strict";
 
   return {
-    baseUrl: 'static/js',
+    baseUrl: 'static',
     paths: {
-//      'angular': './libs/angular.min',
+      'angular': '../../static/components/angularjs/angular.min',
 //      'angular-route': './libs/angular-route.min',
 //      'ui-router': './libs/angular-ui-router.min',
 //      'ui-bootstrap': './libs/bootstrap/ui-bootstrap.min',
@@ -27,10 +27,10 @@ define([], function() {
       }
     },
     shim: {
-//      'angular': {
-//        'deps': ['jquery'],
-//        'exports': 'angular'
-//      },
+      'angular': {
+        //'deps': ['jquery'],
+        'exports': 'angular'
+      },
 //      'prettify': {
 //        'exports': 'prettyPrintOne'
 //      },
