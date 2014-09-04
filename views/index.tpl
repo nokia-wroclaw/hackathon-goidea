@@ -78,5 +78,6 @@
 			</div>
 			</div>
 		</header>
+		<script src="/static/components/requirejs/require.js" data-main="static/js/main" ></script>
 	</body>
 </html>
