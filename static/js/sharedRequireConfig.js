@@ -6,10 +6,10 @@ define([], function() {
     paths: {
       'angular': '../../static/components/angularjs/angular.min',
 //      'angular-route': './libs/angular-route.min',
-//      'ui-router': './libs/angular-ui-router.min',
-//      'ui-bootstrap': './libs/bootstrap/ui-bootstrap.min',
+      'ui-router': '../../static/components/angular-ui-router/release/angular-ui-router.min',
+      'bootstrap': '../../static/components/bootstrap/dist/js/bootstrap.min',
       '_': '../../static/components/lodash/dist/lodash.min',
-//      'jquery': './libs/jquery',
+      'jquery': '../../static/components/jquery/dist/jquery.min',
 //      'jquery-ui': './libs/jquery-ui/jquery-ui',
 //      'select2': './libs/select2/select2',
 //      'slimscroll': './libs/slimscroll',
