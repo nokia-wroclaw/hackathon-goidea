@@ -4,10 +4,10 @@ define([], function() {
   return {
     baseUrl: 'static/js',
     paths: {
-      'angular': '../../static/components/angularjs/angular.min',
+      'angular': '../../static/components/angularjs/angular',
 //      'angular-route': './libs/angular-route.min',
-      'ui-router': '../../static/components/angular-ui-router/release/angular-ui-router.min',
-      'bootstrap': '../../static/components/bootstrap/dist/js/bootstrap.min',
+      'ui-router': '../../static/components/angular-ui-router/release/angular-ui-router',
+      'bootstrap': '../../static/components/bootstrap/dist/js/bootstrap',
       '_': '../../static/components/lodash/dist/lodash.min',
       'jquery': '../../static/components/jquery/dist/jquery.min',
 //      'jquery-ui': './libs/jquery-ui/jquery-ui',
@@ -28,7 +28,7 @@ define([], function() {
     },
     shim: {
       'angular': {
-        //'deps': ['jquery'],
+        'deps': ['jquery'],
         'exports': 'angular'
       },
 //      'prettify': {
@@ -43,9 +43,9 @@ define([], function() {
 //      'angular-route': {
 //        'deps': ['angular']
 //      },
-//      'ui-router': {
-//        'deps': ['angular']
-//      },
+      'ui-router': {
+        'deps': ['angular']
+      },
 //      'ui-bootstrap': {
 //        'deps': ['angular']
 //      }
