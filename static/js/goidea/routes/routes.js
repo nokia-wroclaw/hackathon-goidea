@@ -1,15 +1,21 @@
-define(['angular', '../namespace', 'ui-router'],
-  function(angular, namespace) {
+define(['angular', '../namespace', 'require', 'ui-router'],
+  function (angular, namespace, require) {
     'use strict';
 
     return angular.module(namespace + '.routes', ['ui.router'])
-      .config(function($stateProvider, $urlRouterProvider) {
+      .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise("/");
         $stateProvider
-          .state('main', {
+          .state('default', {
             url: "/",
-            template: '<h2>Halo!</h2>'
-            //templateUrl: 'commonPartials/acl/singleUser'
+            templateUrl: require.toUrl('./views/default.html')
+          }).state('state1', {
+            url: "/state1",
+            templateUrl: require.toUrl('./views/state1.html')
+          })
+          .state('state2', {
+            url: "/state2",
+            templateUrl: require.toUrl('./views/state2.html')
           });
       });
   });
