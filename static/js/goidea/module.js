@@ -1,4 +1,5 @@
-define(['angular', './namespace',
+define(['angular',
+    './namespace',
     './controllers/index',
     './directives/index',
     './services/index',

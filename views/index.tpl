@@ -1,83 +1,40 @@
 <!DOCTYPE html>
 
 <html>
-  	<head>
-    	<title>Beego</title>
-    	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+  <title>Beego</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-		<style type="text/css">
-			body {
-				margin: 0px;
-				font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-				font-size: 14px;
-				line-height: 20px;
-				color: rgb(51, 51, 51);
-				background-color: rgb(255, 255, 255);
-			}
+  <link rel="stylesheet" type="text/css" href="static/components/bootstrap/dist/css/bootstrap.css">
 
-			.hero-unit {
-				padding: 60px;
-				margin-bottom: 30px;
-				border-radius: 6px 6px 6px 6px;
-			}
+</head>
 
-			.container {
-				width: 940px;
-				margin-right: auto;
-				margin-left: auto;
-			}
+<body>
+<div class="nav navbar navbar-static-top navbar-default" role="navigation">
+       <div class="container-fluid">
+        <div class="navbar-header"><a href="#"> gogo icon</a>
 
-			.row {
-				margin-left: -20px;
-			}
+        </div>
+        <div class="navbar-class callapse navbar-right">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+            <a class="dropdown-toggle" href='#' data-toggle='dropdown'>
+              <i class="fa fa-user fa-lg">user icon</i>
+            </a>
+            <ul class="dropdown-menu" role='menu'>
+              <li class="dropdown-header">Macio </li>
+              <li class="divider">Macio </li>
+              <li><a href="">Contact </a> </li>
+              <li><a href="">Logout </a> </li>
+            </ul>
+           </li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-			h1 {
-				margin: 10px 0px;
-				font-family: inherit;
-				font-weight: bold;
-				text-rendering: optimizelegibility;
-			}
+    <div class="ui-view"> </div>
 
-			.hero-unit h1 {
-				margin-bottom: 0px;
-				font-size: 60px;
-				line-height: 1;
-				letter-spacing: -1px;
-				color: inherit;
-			}
-
-			.description {
-				padding-top: 5px;
-				padding-left: 5px;
-				font-size: 18px;
-				font-weight: 200;
-				line-height: 30px;
-				color: inherit;
-			}
-
-			p {
-				margin: 0px 0px 10px;
-			}
-		</style>
-	</head>
-
-  	<body>
-  		<header class="hero-unit" style="background-color:#A9F16C">
-			<div class="container">
-			<div class="row">
-			  <div class="hero-text">
-			    <h1>Welcome to Beego!</h1>
-			    <p class="description">
-			    	Beego is a simple & powerful Go web framework which is inspired by tornado and sinatra.
-			    <br />
-			    	Official website: <a href="http://{{.Website}}">{{.Website}}</a>
-			    <br />
-			    	Contact me: {{.Email}}
-			    </p>
-			  </div>
-			</div>
-			</div>
-		</header>
-		<script src="/static/components/requirejs/require.js" data-main="static/js/main" ></script>
-	</body>
+<script src="/static/components/requirejs/require.js" data-main="static/js/main"></script>
+</body>
 </html>

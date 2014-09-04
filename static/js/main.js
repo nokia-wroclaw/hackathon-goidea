@@ -2,7 +2,9 @@ require(['static/js/sharedRequireConfig.js'], function(sharedRequireConfig) {
   'use strict';
   require.config(sharedRequireConfig);
 
-  require(['angular', '_'], function(angular, _) {
-
+  require(['./goidea/namespace','./goidea/module'], function(namespace) {
+      angular.element().ready(function() {
+          angular.bootstrap(document, [namespace]);
+      });
   });
 });

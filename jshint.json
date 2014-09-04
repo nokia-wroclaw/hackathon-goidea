@@ -23,7 +23,8 @@
       "alert": true,
       "strict": true,
       "require": true,
-      "module": true
+      "module": true,
+      "console" : true
     }
   },
   "frontend": {
