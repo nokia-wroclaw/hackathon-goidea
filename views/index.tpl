@@ -78,5 +78,7 @@
 			</div>
 			</div>
 		</header>
+		<script src="/static/js/sharedRequireConfig.js" data-main="static/js/main" ></script>
+		<script src="/static/components/requirejs/require.js" data-main="static/js/main" ></script>
 	</body>
 </html>
