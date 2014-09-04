@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	//"log"
+	"log"
 	"encoding/json"
 	"github.com/astaxie/beego"
 	"./../models"
@@ -24,17 +24,12 @@ func (this *ApiController) Ideas() {
 	o := orm.NewOrm()
 
 	var ideas []*models.Idea
-
-	//table := o.QueryTable("idea")
+	log.Println(request.Filtering)
+	table := o.QueryTable("idea")
 	for key, value := range request.Filtering {
-		o.QueryTable("idea").Filter(key,value).All(&ideas)
-		//table.Filter(key, value).All(&ideas)
+		table = table.Filter(key, value)
 	}
-	//table.All(&ideas)
-
-	//o.QueryTable("idea").Filter("title","ALA").All(&ideas)
-
-	//log.Fatal(ideas)
+	table.All(&ideas)
 
 	this.Data["json"] = &ideas
 	this.ServeJson()
