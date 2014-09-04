@@ -28,6 +28,11 @@ define([], function () {
                 ],
                 'exports': 'angular'
             },
+            bootstrap : {
+              deps : [
+                'jquery'
+              ]
+            },
             '_': {
                 'exports': '_'
             },

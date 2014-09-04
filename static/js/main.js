@@ -3,8 +3,8 @@ require(['static/js/sharedRequireConfig.js'], function(sharedRequireConfig) {
   require.config(sharedRequireConfig);
 
   require(['./goidea/namespace','./goidea/module'], function(namespace) {
-//      angular.element().ready(function() {
-//          angular.bootstrap(document, [namespace]);
-//      });
+      angular.element().ready(function() {
+          angular.bootstrap(document, [namespace]);
+      });
   });
 });

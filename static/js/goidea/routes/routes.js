@@ -8,14 +8,14 @@ define(['angular', '../namespace', 'require', 'ui-router'],
         $stateProvider
           .state('default', {
             url: "/",
-            templateUrl: require.toUrl('./views/default.html')
+            templateUrl: require.toUrl('./../views/default.html')
           }).state('state1', {
             url: "/state1",
-            templateUrl: require.toUrl('./views/state1.html')
+            templateUrl: require.toUrl('./../views/state1.html')
           })
           .state('state2', {
             url: "/state2",
-            templateUrl: require.toUrl('./views/state2.html')
+            templateUrl: require.toUrl('./../views/state2.html')
           });
       });
   });
