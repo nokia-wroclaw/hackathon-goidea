@@ -1,7 +1,8 @@
 package controllers
 
 import (
-	"fmt"
+	//"log"
+	"encoding/json"
 	"github.com/astaxie/beego"
 	"./../models"
 	"github.com/astaxie/beego/orm"
@@ -11,28 +12,40 @@ type ApiController struct {
 	beego.Controller
 }
 
-func (this *ApiController) Get() {
+type ApiRequest struct {
+	Collection string
+	Filtering map[string]string
+}
+
+func (this *ApiController) Ideas() {
+	var request ApiRequest
+	json.Unmarshal(this.Ctx.Input.RequestBody, &request)
+
+	o := orm.NewOrm()
+
+	var ideas []*models.Idea
+
+	table := o.QueryTable("idea")
+	for key, value := range request.Filtering {
+		table.Filter(key, value)
+	}
+	table.All(&ideas)
+
+	//log.Fatal(ideas)
+
+	this.Data["json"] = &ideas
+	this.ServeJson()
+}
+
+func (this *ApiController) Insert() {
 	o := orm.NewOrm()
 
 	idea := models.Idea{Title: "DUPA"}
 
-	id, err := o.Insert(&idea)
-	this.Ctx.Output.Body([]byte("hello world id:"))
-	fmt.Printf("ID: %d, ERR:%v\n", id, err)
+	o.Insert(&idea)
 
-	//	// update
-	//	user.Name = "astaxie"
-	//	num, err := o.Update(&user)
-	//	fmt.Printf("NUM: %d, ERR: %v\n", num, err)
-	//
-	//	// read one
-	//	u := models.User{Id: user.Id}
-	//	err = o.Read(&u)
-	//	fmt.Printf("ERR: %v\n", err)
-	//
-	//	// delete
-	//	num, err = o.Delete(&u)
-	//	fmt.Printf("NUM: %d, ERR: %v\n", num, err)
-
-
+	this.Data["json"] = &idea
+	this.ServeJson()
 }
+
+
