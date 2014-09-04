@@ -48,8 +48,26 @@ h1 {
 }
 
 .small-image {
-    height: 150px;
-    width: auto;
+    height: auto;
+    width: 100%;
+    float: left;
+    margin-right: 10px;
+}
+
+.single-idea-container {
+    margin-bottom: 30px;
+}
+
+.options-panel {
+    margin-top: 30px;
+}
+
+.tiny-progress {
+    height:10px;
+}
+
+.options-table{
+    width: 100%;
 }
 
 p {
