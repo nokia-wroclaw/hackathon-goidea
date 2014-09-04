@@ -19,8 +19,8 @@ _cgo_export.*
 
 _testmain.go
 
-!bin/bee.exe
 *.exe
+!bin/*.exe
 *.test
 
 .idea
