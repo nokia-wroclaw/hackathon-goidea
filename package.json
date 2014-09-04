@@ -1,0 +1,27 @@
+{
+  "name": "hackathon-goidea",
+  "version": "1.0.0",
+  "description": "hackathon-gocsr\r ===============",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-go": "^0.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nokia-wroclaw/hackathon-goidea"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nokia-wroclaw/hackathon-goidea/issues"
+  },
+  "homepage": "https://github.com/nokia-wroclaw/hackathon-goidea"
+}
