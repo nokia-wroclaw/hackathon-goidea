@@ -9,11 +9,11 @@ define(['angular', '../namespace', 'require', 'ui-router'],
           .state('default', {
             url: "/",
             templateUrl: require.toUrl('./../views/default.html')
-          }).state('state1', {
+          }).state('default.state1', {
             url: "/state1",
             templateUrl: require.toUrl('./../views/state1.html')
           })
-          .state('state2', {
+          .state('default.state2', {
             url: "/state2",
             templateUrl: require.toUrl('./../views/state2.html')
           });
