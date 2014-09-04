@@ -4,26 +4,37 @@
 <head>
   <title>Beego</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <link rel="stylesheet" type="text/css" href="static/components/bootstrap/dist/css/bootstrap.css">
+
 </head>
 
 <body>
-<header class="hero-unit" style="background-color:#A9F16C">
-  <div class="container">
-    <div class="row">
-      <div class="hero-text">
-        <h1>Welcome to Beego!</h1>
-        <button class="btn-danger">Button</button>
-        <p class="description">
-          Beego is a simple & powerful Go web framework which is inspired by tornado and sinatra.
-          <br/>
-          Official website: <a href="http://{{.Website}}">{{.Website}}</a>
-          <br/>
-          Contact me: {{.Email}}
-        </p>
+<div class="nav navbar navbar-static-top navbar-default" role="navigation">
+       <div class="container-fluid">
+        <div class="navbar-header"> gogo icon
+
+        </div>
+        <div class="navbar-class callapse navbar-right">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+            <a class="dropdown-toggle" href='#' data-toggle='dropdown'>
+              <i class="fa fa-user fa-lg">user icon</i>
+            </a>
+            <ul class="dropdown-menu" role='menu'>
+              <li class="dropdown-header">Macio </li>
+              <li class="divider">Macio </li>
+              <li><a href="">Contact </a> </li>
+              <li><a href="">Logout </a> </li>
+            </ul>
+           </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</header>
+
+    <div class="ui-view"> </div>
+
 <script src="/static/components/requirejs/require.js" data-main="static/js/main"></script>
 </body>
 </html>
