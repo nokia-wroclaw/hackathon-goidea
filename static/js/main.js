@@ -5,7 +5,7 @@ require(['static/js/sharedRequireConfig.js'], function(sharedRequireConfig) {
 
   require.config(sharedRequireConfig);
 
-  require(['angular'], function(angular) {
+  require(['angular', 'jquery', 'ui-router', 'bootstrap'], function(angular) {
     console.log(angular);
   });
 });
