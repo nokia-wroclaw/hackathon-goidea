@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	//"log"
+	"log"
 	"encoding/json"
 	"github.com/astaxie/beego"
 	"./../models"
@@ -14,11 +14,15 @@ type ApiController struct {
 
 type ApiRequest struct {
 	Collection string
-	Filtering map[string]string
+	Filter map[string]string
+	OrderBy []string
+	Limit uint
+	Offset uint
 }
 
 func (this *ApiController) Ideas() {
 	var request ApiRequest
+
 	json.Unmarshal(this.Ctx.Input.RequestBody, &request)
 
 	o := orm.NewOrm()
@@ -26,9 +30,12 @@ func (this *ApiController) Ideas() {
 	var ideas []*models.Idea
 
 	table := o.QueryTable("idea")
-	for key, value := range request.Filtering {
+	for key, value := range request.Filter {
 		table = table.Filter(key, value)
 	}
+	table = table.OrderBy(request.OrderBy...)
+	table = table.Limit(request.Limit,request.Offset)
+
 	table.All(&ideas)
 
 	this.Data["json"] = &ideas
