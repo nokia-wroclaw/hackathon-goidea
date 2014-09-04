@@ -12,7 +12,7 @@
 <body>
 <div class="nav navbar navbar-static-top navbar-default" role="navigation">
        <div class="container-fluid">
-        <div class="navbar-header"> gogo icon
+        <div class="navbar-header"><a href="#"> gogo icon</a>
 
         </div>
         <div class="navbar-class callapse navbar-right">
