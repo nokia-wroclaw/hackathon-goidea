@@ -1,0 +1,26 @@
+{
+  "name": "dupa",
+  "version": "1.0.0",
+  "homepage": "https://github.com/nokia-wroclaw/hackathon-goidea",
+  "authors": [
+    "wincek <marcin.wincek@nsn.com>"
+  ],
+  "main": "./static/css/main.css",
+  "description": "olej to",
+  "keywords": [
+    "hackathon"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "componentsDirectory": "static/",
+  "dependencies": {
+    "requirejs": "~2.1.14"
+  }
+}
