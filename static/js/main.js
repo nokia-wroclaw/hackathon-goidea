@@ -1,7 +1,8 @@
 require(['static/js/sharedRequireConfig.js'], function(sharedRequireConfig) {
   'use strict';
+  require.config(sharedRequireConfig);
 
-  sharedRequireConfig.baseUrl = 'static/js';
+  require(['angular', '_'], function(angular, _) {
 
   require.config(sharedRequireConfig);
 

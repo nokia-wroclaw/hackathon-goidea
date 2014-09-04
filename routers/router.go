@@ -6,6 +6,7 @@ import (
 )
 
 func init() {
-    beego.Router("/", &controllers.MainController{})
-	beego.SetStaticPath("/static","static")
+	beego.Router("/", &controllers.MainController{})
+	beego.Router("/api", &controllers.ApiController{})
 }
+
