@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"log"
+	//"log"
 	"encoding/json"
 	"github.com/astaxie/beego"
 	"./../models"
@@ -24,7 +24,7 @@ func (this *ApiController) Ideas() {
 	o := orm.NewOrm()
 
 	var ideas []*models.Idea
-	log.Println(request.Filtering)
+
 	table := o.QueryTable("idea")
 	for key, value := range request.Filtering {
 		table = table.Filter(key, value)
