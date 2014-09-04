@@ -4,12 +4,13 @@ define([], function () {
     return {
         baseUrl: 'static/js',
         paths: {
-            'angular': '../../static/components/angularjs/angular',
-            'ui-router': '../../static/components/angular-ui-router/release/angular-ui-router',
-            'bootstrap': '../../static/components/bootstrap/dist/js/bootstrap',
+            'angular': '../../static/components/angularjs/angular.min',
+            'ui-router': '../../static/components/angular-ui-router/release/angular-ui-router.min',
+            'bootstrap': '../../static/components/bootstrap/dist/js/bootstrap.min',
             '_': '../../static/components/lodash/dist/lodash.min',
             'jquery': '../../static/components/jquery/dist/jquery.min',
-            'bootstrapcss': ['../../static/components/bootstrap/dist/css/bootstrap'],
+            'bootstrapcss': ['../../static/components/bootstrap/dist/css/bootstrap.min'],
+            'fontawesome': ['../../static/components/fontawesome/css/font-awesome.min']
         },
         map: {
             '*': {
@@ -24,7 +25,8 @@ define([], function () {
                     'jquery',
                     'bootstrap',
                     'css!bootstrapcss',
-                    'css!../css/main.css'
+                    'css!../css/main.css',
+                    'css!fontawesome'
                 ],
                 'exports': 'angular'
             },

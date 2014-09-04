@@ -16,6 +16,10 @@ define(['angular', '../namespace', 'require', 'ui-router'],
           .state('default.state2', {
             url: "/state2",
             templateUrl: require.toUrl('./../views/state2.html')
+          })
+          .state('default.details', {
+            url: "/details",
+            templateUrl: require.toUrl('./../views/details.html')
           });
       });
   });
