@@ -18,7 +18,7 @@ define(['angular', '../namespace', 'require', 'ui-router'],
             templateUrl: require.toUrl('./../views/edit.html')
           })
           .state('default.details', {
-            url: "/details",
+            url: "details/:id",
             templateUrl: require.toUrl('./../views/details.html')
           });
       });

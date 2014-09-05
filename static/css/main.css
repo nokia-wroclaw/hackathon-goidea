@@ -54,6 +54,12 @@ h1 {
     margin-right: 10px;
 }
 
+.details-small-image {
+    height: auto;
+    width: 100%;
+    float: left;
+}
+
 .single-idea-container {
     margin-bottom: 30px;
 }
