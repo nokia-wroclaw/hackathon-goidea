@@ -11,6 +11,10 @@ define(['angular', '../namespace', 'require', 'ui-router'],
             templateUrl: require.toUrl('./../views/state1.html')})
           .state('singleIdea', {
             url: "/state2",
+            templateUrl: require.toUrl('./../views/state2.html')
+          })
+          .state('default.details', {
+            url: "/details",
             templateUrl: require.toUrl('./../views/details.html')
           });
       });

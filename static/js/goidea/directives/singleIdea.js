@@ -4,7 +4,7 @@ define(['./module', 'require'], function(directives, require) {
   return directives.directive('singleIdea', function($rootScope) {
     return {
       restrict: "E",
-      templateUrl: require.toUrl('./../views/singleIdea.html'),
+      templateUrl: require.toUrl('./../views/templates/singleIdea.html'),
       replace: true,
       scope: {
         idea: '='

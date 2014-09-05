@@ -3,7 +3,7 @@ define(['angular',
     './controllers/index',
     './directives/index',
     './services/index',
-    './routes/routes'
+    './routes/routes',
   ],
   function(ng, namespace) {
     'use strict';
