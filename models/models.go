@@ -22,6 +22,7 @@ type User struct {
 	Username string  `orm:"size(100)"`
 	Fullname string  `orm:"size(100)"`
 	Mail     string  `orm:"size(100)"`
+	Role     string  `orm:"size(10);default(BASIC)"`
 	MyIdeas  []*Idea `orm:"reverse(many)" json:"-"`
 	Ideas    []*Idea `orm:"reverse(many)" json:"-"`
 }
