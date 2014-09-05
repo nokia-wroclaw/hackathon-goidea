@@ -39,13 +39,15 @@ func (this *BaseController) upsert(query interface{}, entity interface{}) {
 		if id, err := o.Insert(entity); err == nil {
 			log.Println("Entity inserted: ", id)
 		} else {
-			log.Fatal("ERROR: inserting", err)
+			log.Println("ERROR: inserting", err)
+			this.Abort("400")
 		}
 	} else {
 		if id, err := o.Update(entity); err == nil {
 			log.Println("Entity updated: ", id)
 		} else {
-			log.Fatal("ERROR: updating id ", id, err)
+			log.Println("ERROR: updating id ", id, err)
+			this.Abort("400")
 		}
 	}
 	o.Read(entity)

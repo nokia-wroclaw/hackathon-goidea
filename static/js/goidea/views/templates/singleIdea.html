@@ -8,11 +8,11 @@
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
             <div class="row">
                 <a ui-sref="default.details({id: idea.id})">
-                    <h1>{{ idea.title }}</h1>
+                    <h1>{{ idea.Title }}</h1>
                 </a>
-                <p>by {{ idea.creator }}</p>
+                <p>by {{ idea.Creator.Fullname }}</p>
                 <br>
-                <span> {{ idea.description | limitTo: 400 }}</span>
+                <span> {{ idea.Description | limitTo: 400 }}</span>
             </div>
             <div class="row options-panel">
                 <div class="progress tiny-progress">
@@ -29,10 +29,10 @@
                         </tr>
                     </thead>
                     <tr>
-                        <td>{{ idea.assigned.length }}</td>
-                        <td>{{ idea.minAssignes }}</td>
-                        <td>{{ idea.votes.length }}</td>
-                        <td>{{ idea.comments.length }}</td>
+                        <td>{{ idea.Assignees.length }}</td>
+                        <td>{{ idea.MinAssignees }}</td>
+                        <td>{{ idea.Voters.length }}</td>
+                        <td>{{ idea.Comments.length }}</td>
                     </tr>
                 </table>
             </div>
