@@ -54,6 +54,13 @@ h1 {
     float: left;
 }
 
+.container {
+    position: absolute;
+    overflow: auto;
+    width: 100%;
+    height: calc(100% - 90px);
+}
+
 .idea-comment {
     background-color: #d1d1d1;
     margin-bottom: 10px;

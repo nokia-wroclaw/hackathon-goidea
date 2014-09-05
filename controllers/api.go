@@ -37,15 +37,15 @@ func (this *BaseController) upsert(query interface{}, entity interface{}) {
 	err := o.Read(query)
 	if err == orm.ErrNoRows || err == orm.ErrMissPK {
 		if id, err := o.Insert(entity); err == nil {
-			log.Println("ERROR: inserting")
-		} else {
 			log.Println("Entity inserted: ", id)
+		} else {
+			log.Println("ERROR: inserting", err)
 		}
 	} else {
 		if id, err := o.Update(entity); err == nil {
-			log.Println("ERROR: updating id ", id)
-		} else {
 			log.Println("Entity updated: ", id)
+		} else {
+			log.Println("ERROR: updating id ", id, err)
 		}
 	}
 	o.Read(entity)
@@ -101,7 +101,7 @@ type CommentController struct {
 
 func (this *CommentController) Post() {
 	var comments []*models.Comment
-	this.getRequest().GetQuery("user").All(&comments)
+	this.getRequest().GetQuery("comment").All(&comments)
 	this.respond(&comments)
 }
 
@@ -111,6 +111,16 @@ func (this *CommentController) Put() {
 	query := models.Comment{Id:comment.Id}
 
 	this.upsert(&query, &comment)
+
+//	o := orm.NewOrm()
+//	idea := models.Idea{Id:comment.Id}
+//	o.Read(&idea)
+//	m2m := o.QueryM2M(&idea, "Comments")
+//	m2m.Add(comment)
+//	o.Read(&idea)
+//	this.respond(&idea)
+//
+
 	this.respond(&comment)
 }
 

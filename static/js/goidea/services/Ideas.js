@@ -7,9 +7,11 @@ define(['./module'], function (services) {
       getById: function (id, callback) {
         var result = {};
 
-        $timeout(function () {
-          findById(id, result,callback);
-        }, 25);
+        if (_.isNumber(id)){
+          $timeout(function () {
+            findById(id, result,callback);
+          }, 25);
+        }
 
         return result;
       },
@@ -17,7 +19,7 @@ define(['./module'], function (services) {
         callback(data);
       },
       updateOrInsert: function (idea) {
-        var $httpMethod = _.isNumber(idea.id)? $http.post:$http.put;
+        var $httpMethod = _.isNumber(idea.Id)? $http.post:$http.put;
         var deferred = $q.defer();
         $httpMethod.call($http,'/api/ideas', idea)
           .success(function (idea) {
@@ -37,7 +39,7 @@ define(['./module'], function (services) {
      */
     var findById = function (id, result, callback) {
       var idea = _.find(data, function (item) {
-        return item.id == id;
+        return item.Id == id;
       });
       _.extend(result, idea);
       if (_.isFunction(callback)) {
