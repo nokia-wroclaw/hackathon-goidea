@@ -10,7 +10,9 @@ define([], function () {
             '_': '../../static/components/lodash/dist/lodash.min',
             'jquery': '../../static/components/jquery/dist/jquery.min',
             'bootstrapcss': ['../../static/components/bootstrap/dist/css/bootstrap.min'],
-            'fontawesome': ['../../static/components/fontawesome/css/font-awesome.min']
+            'fontawesome': ['../../static/components/fontawesome/css/font-awesome.min'],
+            'ui.calendar': ['../../static/components/angular-ui-calendar/src/calendar'],
+            'fullcalendar': ['../../static/components/fullcalendar/fullcalendar.min']
         },
         map: {
             '*': {
@@ -43,8 +45,10 @@ define([], function () {
             },
             'csses': {
                 'deps': ['css!bootstrapcss']
+            },
+            'ui.calendar': {
+                'deps': ['angular', 'fullcalendar']
             }
-
         }
     };
 });

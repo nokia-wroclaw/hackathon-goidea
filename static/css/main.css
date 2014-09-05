@@ -54,8 +54,14 @@ h1 {
     float: left;
 }
 
+.idea-comment {
+    background-color: #d1d1d1;
+    margin-bottom: 10px;
+}
+
 .comments-container {
-    background-color: lightgrey;
+    margin-top: 25px;
+# background-color: lightgrey;
 }
 
 .single-idea-container {
@@ -76,4 +82,9 @@ h1 {
 
 p {
     margin: 0px 0px 10px;
+}
+
+.btn-group.btn-group-right {
+  float: right;
+  margin-right: 1em;
 }
