@@ -32,6 +32,11 @@ func (this *BaseController) respond(entity interface{}) {
 	this.ServeJson()
 }
 
+func (this *BaseController) fetchAndRespond(entityName string, entity interface{}) {
+	this.getRequest().GetQuery(entityName).RelatedSel().All(entity)
+	this.respond(entity)
+}
+
 func (this *BaseController) upsert(query interface{}, entity interface{}) {
 	o := orm.NewOrm()
 	err := o.Read(query)
@@ -61,8 +66,7 @@ type IdeaController struct {
 
 func (this *IdeaController) Post() {
 	var ideas []*models.Idea
-	this.getRequest().GetQuery("idea").All(&ideas)
-	this.respond(&ideas)
+	this.fetchAndRespond("idea", &ideas)
 }
 
 func (this *IdeaController) Put() {
@@ -82,8 +86,7 @@ type UserController struct {
 
 func (this *UserController) Post() {
 	var users []*models.User
-	this.getRequest().GetQuery("user").All(&users)
-	this.respond(&users)
+	this.fetchAndRespond("user", &users)
 }
 
 func (this *UserController) Put() {
@@ -103,8 +106,7 @@ type CommentController struct {
 
 func (this *CommentController) Post() {
 	var comments []*models.Comment
-	this.getRequest().GetQuery("comment").All(&comments)
-	this.respond(&comments)
+	this.fetchAndRespond("comment", &comments)
 }
 
 func (this *CommentController) Put() {

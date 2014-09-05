@@ -29,7 +29,6 @@ type User struct {
 	Created    []*Idea    `orm:"reverse(many)" json:"-"`
 	VotedOn    []*Idea    `orm:"reverse(many)" json:"-"`
 	AssignedTo []*Idea    `orm:"reverse(many)" json:"-"`
-	Comments   []*Comment `orm:"reverse(many)" json:"-"`
 }
 
 type Comment struct {
