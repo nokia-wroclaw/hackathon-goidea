@@ -66,13 +66,6 @@ func (this *IdeaController) Post() {
 func (this *IdeaController) Put() {
 	idea := models.Idea{}
 	json.Unmarshal(this.Ctx.Input.RequestBody, &idea)
-
-	log.Println(string(this.Ctx.Input.RequestBody))
-
-	log.Println("Creator", idea.Creator)
-	log.Println(idea)
-
-
 	query := models.Idea{Id:idea.Id}
 
 	this.upsert(&query, &idea)
@@ -98,6 +91,27 @@ func (this *UserController) Put() {
 
 	this.upsert(&query, &user)
 	this.respond(&user)
+}
+
+//##########################################################
+
+type CommentController struct {
+	BaseController
+}
+
+func (this *CommentController) Post() {
+	var comments []*models.Comment
+	this.getRequest().GetQuery("user").All(&comments)
+	this.respond(&comments)
+}
+
+func (this *CommentController) Put() {
+	comment := models.Comment{}
+	json.Unmarshal(this.Ctx.Input.RequestBody, &comment)
+	query := models.Comment{Id:comment.Id}
+
+	this.upsert(&query, &comment)
+	this.respond(&comment)
 }
 
 //##########################################################
