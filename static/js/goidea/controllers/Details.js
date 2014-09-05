@@ -7,12 +7,10 @@ define(['./module'], function(controllers) {
 
     Ideas.getById(parseInt($stateParams.id), function(idea){
       $scope.idea = idea;
-      console.log(idea);
     });
 
     Comments.getCommentsForIdea(parseInt($stateParams.id), function(comments){
       $scope.comments = comments;
-      console.log(comments);
     });
   });
 });
