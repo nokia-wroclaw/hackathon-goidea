@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"github.com/astaxie/beego"
 	"./../models"
+	"./../requests"
 	"github.com/astaxie/beego/orm"
 )
 
@@ -12,32 +13,12 @@ type ApiController struct {
 	beego.Controller
 }
 
-type ApiRequest struct {
-	Collection string
-	Filter map[string]string
-	OrderBy []string
-	Limit uint
-	Offset uint
-}
-
-func SetQuery(request *ApiRequest, collectionName string) orm.QuerySeter {
-	o := orm.NewOrm()
-	queryTable := o.QueryTable(collectionName)
-	for key, value := range request.Filter {
-		queryTable = queryTable.Filter(key, value)
-	}
-	queryTable = queryTable.OrderBy(request.OrderBy...)
-	queryTable = queryTable.Limit(request.Limit,request.Offset)
-	return queryTable;
-}
-
 func (this *ApiController) Ideas() {
-	var request ApiRequest
-	json.Unmarshal(this.Ctx.Input.RequestBody, &request)
+	request := requests.ApiRequest{}
 	var ideas []*models.Idea
 
-	table := SetQuery(&request,"idea")
-	table.All(&ideas)
+	json.Unmarshal(this.Ctx.Input.RequestBody, &request)
+	request.GetQuery("idea").All(&ideas)
 
 	this.Data["json"] = &ideas
 	this.ServeJson()
