@@ -18,6 +18,9 @@
         </div>
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
             <span> {{ idea.description }}</span>
+            <div class="comments-container">
+                <idea-comment ng-repeat="comment in comments" comment-id="comment"/>
+            </div>
         </div>
     </div>
 </div>

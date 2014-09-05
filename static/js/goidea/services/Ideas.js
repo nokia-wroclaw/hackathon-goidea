@@ -56,7 +56,7 @@ define(['./module'], function (services) {
         status: 'proposal',
         creator_id: 1,
         assigned: ['oni'],
-        attachments: [],
+        attachments: ['stample.jpeg', 'Example.svg'],
         icon: '',
         comments: '',
         minAssignees: 3
