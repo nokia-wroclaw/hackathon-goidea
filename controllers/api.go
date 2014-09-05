@@ -2,21 +2,29 @@ package controllers
 
 import (
 	//"log"
+	"encoding/json"
 	"github.com/astaxie/beego"
 	"./../models"
 	"./../requests"
 	"github.com/astaxie/beego/orm"
 )
 
-type ApiController struct {
+//##########################################################
+type BaseController struct {
 	beego.Controller
 }
 
-func (this *ApiController) getRequest() *requests.ApiRequest {
+func (this *BaseController) getRequest() *requests.ApiRequest {
 	return requests.NewApiRequest(this.Ctx.Input.RequestBody)
 }
 
-func (this *ApiController) Ideas() {
+// TODO reflection, not copy paste
+//##########################################################
+type IdeaController struct {
+	BaseController
+}
+
+func (this *IdeaController) Post() {
 	var ideas []*models.Idea
 
 	this.getRequest().GetQuery("idea").All(&ideas)
@@ -25,24 +33,27 @@ func (this *ApiController) Ideas() {
 	this.ServeJson()
 }
 
-func (this *ApiController) Users() {
-	var users []*models.User
-
-	this.getRequest().GetQuery("user").All(&users)
-
-	this.Data["json"] = &users
-	this.ServeJson()
-}
-
-func (this *ApiController) Put() {
+func (this *IdeaController) Put() {
 	o := orm.NewOrm()
+	idea := models.Idea{}
+	json.Unmarshal(this.Ctx.Input.RequestBody, &idea)
 
-	idea := models.Idea{Title: "DUPA"}
+	query := models.Idea{Id:idea.Id}
+	err := o.Read(&query)
+	if err == orm.ErrNoRows || err == orm.ErrMissPK {
+		o.Insert(&idea)
+	} else {
+		o.Update(&idea)
+	}
 
-	o.Insert(&idea)
+	o.Read(&idea)
 
 	this.Data["json"] = &idea
 	this.ServeJson()
 }
+//##########################################################
+
+
+
 
 
