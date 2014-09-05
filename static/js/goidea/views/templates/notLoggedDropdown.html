@@ -5,20 +5,19 @@
         </a>
         <ul class="dropdown-menu" role='menu'>
             <li>
-                <form name="loginForm" ng-controller="Login"
-                      ng-submit="login(credentials)" novalidate>
-                    <div class="form-group">
-                        <label for="username">Username:</label>
-                        <input type="text" id="username"
-                               ng-model="credentials.username">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" id="password"
-                               ng-model="credentials.password">
-                    </div>
-                    <button type="submit" class="btn btn-success">Login</button>
-                    </div>
+                <p class="text-danger" ng-hide="!loginError">Wrong password or username</p>
+                <p class="text-success" ng-hide="!loginSuccess">User logged in!</p>
+                <form name="loginForm"
+                      ng-submit="logIn(credentials)" novalidate>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username"
+                           ng-model="credentials.username" ng-disabled="disabled">
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password"
+                           ng-model="credentials.password" ng-disabled="disabled">
+
+                    <button type="submit" ng-disabled="disabled">Login</button>
                 </form>
             </li>
         </ul>

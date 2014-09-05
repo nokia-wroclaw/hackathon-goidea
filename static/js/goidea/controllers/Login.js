@@ -1,7 +1,8 @@
-define(['./module', '_'], function(controllers, _) {
+define(['./module', '_'], function (controllers, _) {
   'use strict';
 
-  controllers.controller('Login', function($rootScope, $scope) {
+  controllers.controller('Login', function ($rootScope, $scope, User) {
+
 
   });
 });
