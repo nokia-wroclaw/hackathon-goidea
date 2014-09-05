@@ -7,6 +7,12 @@ define(['./module'], function (controllers) {
 
     $scope.isSaved = function(){
       return _.isNumber($scope.idea.id);
+    };
+
+    $scope.update = function(){
+      Ideas.updateOrInsert($scope.idea).success(function(idea){
+        $scope.idea = idea;
+      });
     }
   });
 });

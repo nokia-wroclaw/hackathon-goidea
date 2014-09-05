@@ -1,4 +1,4 @@
-<div ng-controller="edit">
+<div ng-controller="edit" class="container">
     <form role="form">
         <div class="form-group-lg">
             <label for="title">Title</label>
@@ -11,7 +11,7 @@
         </div>
         <div class="form-group">
             <label for="proposedDate">Proposed date</label>
-            <input id="proposedDate" placeholder="" class="form-control" ng-model="idea.proposedDate">
+            <input id="proposedDate" placeholder="" class="form-control" ng-model="idea.event_date">
         </div>
         <div class="form-group">
             <label for="Icon">Icon</label>
@@ -22,9 +22,9 @@
             <input id="minAssignees" placeholder="" class="form-control" ng-model="idea.minAssignees">
         </div>
         <div class="form-group">
-            <span><b>Creator: </b></span><span>{{idea.creator}}</span>
+            <span><b>Creator: </b></span><span>{{idea.creator_id1}}</span>
             <span><b>Status: </b></span><span>{{idea.status}}</span>
-            <span><b>Creation Date: </b></span><span>{{idea.creationDate}}</span>
+            <span><b>Creation Date: </b></span><span>{{idea.creation_date}}</span>
         </div>
 
         <div class="buttons buttons-update" ng-hide="!isSaved()">
