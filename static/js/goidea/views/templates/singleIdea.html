@@ -1,11 +1,15 @@
 <div class="single-idea-container">
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-            <img ng-src="static/images/noImagesYet.png" class="img-rounded small-image"/>
+            <a ui-sref="default.edit({id: idea.id})">
+                <img ng-src="static/images/noImagesYet.png" class="img-rounded small-image"/>
+            </a>
         </div>
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
             <div class="row">
-                <h1>{{ idea.title }}</h1>
+                <a ui-sref="default.edit({id: idea.id})">
+                    <h1>{{ idea.title }}</h1>
+                </a>
                 <p>by {{ idea.creator }}</p>
                 <br>
                 <span> {{ idea.description | limitTo: 400 }}</span>

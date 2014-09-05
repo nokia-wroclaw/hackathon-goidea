@@ -13,12 +13,6 @@ body {
     border-radius: 6px 6px 6px 6px;
 }
 
-.container {
-    width: 940px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
 .row {
     margin-left: -20px;
 }
@@ -58,6 +52,10 @@ h1 {
     height: auto;
     width: 100%;
     float: left;
+}
+
+.comments-container {
+    background-color: lightgrey;
 }
 
 .single-idea-container {

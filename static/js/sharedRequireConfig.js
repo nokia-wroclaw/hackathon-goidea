@@ -4,7 +4,7 @@ define([], function () {
     return {
         baseUrl: 'static/js',
         paths: {
-            'angular': '../../static/components/angularjs/angular.min',
+            'angular': '../../static/components/angularjs/angular',
             'ui-router': '../../static/components/angular-ui-router/release/angular-ui-router.min',
             'bootstrap': '../../static/components/bootstrap/dist/js/bootstrap.min',
             '_': '../../static/components/lodash/dist/lodash.min',

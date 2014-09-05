@@ -1,4 +1,4 @@
-define(['./module', './Ideas'], function() {
+define(['./module', './Ideas', './Comments'], function() {
   'use strict';
 
 });
