@@ -4,11 +4,11 @@
             <img ng-src="static/images/noImagesYet.png" class="img-rounded details-small-image"/>
         </div>
         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-            <h1>{{ idea.title }}</h1>
-            <p>by {{ idea.creator }}</p>
-            <h3>{{ idea.assigned.length }}</h3><p>Assigned</p>
-            <h3>{{ idea.minAssignes }}</h3><p>Min assigned</p>
-            <h3>{{ idea.votes.length }}</h3><p>Votes</p>
+            <h1>{{ idea.Title }}</h1>
+            <p>by {{ idea.Creator }}</p>
+            <h3>{{ idea.Assignees.length }}</h3><p>Assigned</p>
+            <h3>{{ idea.MinAssignes }}</h3><p>Min assigned</p>
+            <h3>{{ idea.Voters.length }}</h3><p>Votes</p>
             <!-- <h3>{{ idea.comments.length }}</h3><p>Comments</p> -->
         </div>
         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
@@ -21,10 +21,10 @@
     </div>
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-            <img ng-repeat="photo in idea.attachments" ng-src="static/images/{{ photo }}" class="img-rounded details-small-image"/>
+            <img ng-repeat="photo in idea.Attachments" ng-src="static/images/{{ photo }}" class="img-rounded details-small-image"/>
         </div>
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-            <span> {{ idea.description }}</span>
+            <span> {{ idea.Description }}</span>
             <div class="comments-container">
                 <h3>Comments</h3>
                 <idea-comment ng-repeat="comment in comments" comment="comment"/>
