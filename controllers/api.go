@@ -13,12 +13,16 @@ type ApiController struct {
 	beego.Controller
 }
 
-func (this *ApiController) Ideas() {
+func (this *ApiController) getRequest() *requests.ApiRequest {
 	request := requests.ApiRequest{}
+	json.Unmarshal(this.Ctx.Input.RequestBody, &request)
+	return &request
+}
+
+func (this *ApiController) Ideas() {
 	var ideas []*models.Idea
 
-	json.Unmarshal(this.Ctx.Input.RequestBody, &request)
-	request.GetQuery("idea").All(&ideas)
+	this.getRequest().GetQuery("idea").All(&ideas)
 
 	this.Data["json"] = &ideas
 	this.ServeJson()
