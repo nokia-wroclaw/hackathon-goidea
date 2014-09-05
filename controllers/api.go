@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	//"log"
+	"log"
 	"encoding/json"
 	"github.com/astaxie/beego"
 	"./../models"
@@ -40,15 +40,65 @@ func (this *IdeaController) Put() {
 
 	query := models.Idea{Id:idea.Id}
 	err := o.Read(&query)
+
 	if err == orm.ErrNoRows || err == orm.ErrMissPK {
-		o.Insert(&idea)
+		if id, err := o.Insert(&idea); err == nil {
+			log.Println("ERROR: inserting")
+		} else {
+			log.Println("Entity inserted: ", id)
+		}
 	} else {
-		o.Update(&idea)
+		if id, err := o.Update(&idea); err == nil {
+			log.Println("ERROR: updating id ", id)
+		} else {
+			log.Println("Entity updated: ", id)
+		}
 	}
 
 	o.Read(&idea)
 
 	this.Data["json"] = &idea
+	this.ServeJson()
+}
+//##########################################################
+type UserController struct {
+	BaseController
+}
+
+func (this *UserController) Post() {
+	var users []*models.User
+
+	this.getRequest().GetQuery("user").All(&users)
+
+	this.Data["json"] = &users
+	this.ServeJson()
+}
+
+func (this *UserController) Put() {
+	o := orm.NewOrm()
+	user := models.User{}
+	json.Unmarshal(this.Ctx.Input.RequestBody, &user)
+
+	query := models.User{Id:user.Id}
+	err := o.Read(&query)
+
+	if err == orm.ErrNoRows || err == orm.ErrMissPK {
+		if id, err := o.Insert(&user); err == nil {
+			log.Println("ERROR: inserting")
+		} else {
+			log.Println("Entity inserted: ", id)
+		}
+	} else {
+		if id, err := o.Update(&user); err == nil {
+			log.Println("ERROR: updating id ", id)
+		} else {
+			log.Println("Entity updated: ", id)
+		}
+	}
+
+	o.Read(&user)
+
+	this.Data["json"] = &user
 	this.ServeJson()
 }
 //##########################################################
