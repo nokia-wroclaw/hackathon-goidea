@@ -35,7 +35,7 @@ define(['./module', '_'], function(services, _) {
     proposedDate: '20.12.2017',
     votes: ['ja', 'oni'],
     assigned: ['oni', 'ona'],
-    attachments: [],
+    attachments: ['stample.jpeg', 'Example.svg'],
     icon: '',
     comments: '',
     minAssignes: 3

@@ -1,7 +1,7 @@
 <div ng-controller="Details" class="col-lg-8 col-md-8 col-sm-8 col-xs-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-            <img src="static/images/noImagesYet.png" class="img-rounded details-small-image"/>
+            <img ng-src="static/images/noImagesYet.png" class="img-rounded details-small-image"/>
         </div>
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
             <h1>{{ idea.title }}</h1>
@@ -13,6 +13,11 @@
         </div>
     </div>
     <div class="row">
-        <span> {{ idea.description }}</span>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <img ng-repeat="photo in idea.attachments" ng-src="static/images/{{ photo }}" class="img-rounded details-small-image"/>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <span> {{ idea.description }}</span>
+        </div>
     </div>
 </div>
