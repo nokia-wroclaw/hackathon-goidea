@@ -42,7 +42,6 @@ func (this *BaseController) upsert(query interface{}, entity interface{}) {
 	o.Read(entity)
 }
 
-// TODO reflection, not copy paste
 //##########################################################
 type IdeaController struct {
 	BaseController
@@ -57,6 +56,13 @@ func (this *IdeaController) Post() {
 func (this *IdeaController) Put() {
 	idea := models.Idea{}
 	json.Unmarshal(this.Ctx.Input.RequestBody, &idea)
+
+	log.Println(string(this.Ctx.Input.RequestBody))
+
+	log.Println("Creator", idea.Creator)
+	log.Println(idea)
+
+
 	query := models.Idea{Id:idea.Id}
 
 	this.upsert(&query, &idea)
@@ -77,7 +83,7 @@ func (this *UserController) Put() {
 	user := models.User{}
 	json.Unmarshal(this.Ctx.Input.RequestBody, &user)
 	query := models.User{Id:user.Id}
-	
+
 	this.upsert(&query, &user)
 	this.respond(&user)
 }
