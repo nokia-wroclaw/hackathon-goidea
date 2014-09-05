@@ -15,8 +15,16 @@ define(['./module'], function (services) {
 
         return result;
       },
-      getIdeas: function (callback) {
-        callback(data);
+      getIdeas: function () {
+          var deferred = $q.defer();
+          $http.post('/api/ideas')
+              .success(function (ideas) {
+                  deferred.resolve(ideas);
+              })
+              .error(function () {
+                  deferred.reject();
+              });
+          return deferred.promise;
       },
       updateOrInsert: function (idea) {
         var $httpMethod = _.isNumber(idea.Id)? $http.post:$http.put;
