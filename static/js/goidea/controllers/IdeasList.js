@@ -1,7 +1,7 @@
-define(['./module', '_'], function(controllers, _) {
+define(['./module'], function(controllers) {
   'use strict';
 
-  controllers.controller('IdeasListCtrl', function($rootScope, $scope, Ideas) {
+  controllers.controller('IdeasList', function($rootScope, $scope, Ideas) {
     $scope.ideas = [];
     Ideas.getIdeas(function(ideas){
       $scope.ideas = ideas;
