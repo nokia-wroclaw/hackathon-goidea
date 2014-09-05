@@ -6,19 +6,11 @@ define(['angular', '../namespace', 'require', 'ui-router'],
       .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise("/");
         $stateProvider
-          .state('default', {
+          .state('listOfIdeas', {
             url: "/",
-            templateUrl: require.toUrl('./../views/default.html')
-          }).state('default.state1', {
-            url: "/state1",
-            templateUrl: require.toUrl('./../views/state1.html')
-          })
-          .state('default.state2', {
+            templateUrl: require.toUrl('./../views/state1.html')})
+          .state('singleIdea', {
             url: "/state2",
-            templateUrl: require.toUrl('./../views/state2.html')
-          })
-          .state('default.details', {
-            url: "/details",
             templateUrl: require.toUrl('./../views/details.html')
           });
       });

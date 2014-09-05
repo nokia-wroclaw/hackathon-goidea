@@ -11,7 +11,7 @@ define(['./module', 'require'], function(directives, require) {
       },
 
       link: function(scope, element, attrs) {
-        console.log('Diretive');
+        scope.progress = scope.idea.assigned.length / scope.idea.minAssignes * 100;
       }
     };
   });

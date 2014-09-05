@@ -1,4 +1,37 @@
-<div>
-    <h1>{{ idea.title }}</h1>
-    <span> {{ idea.description }}</span>
+<div class="single-idea-container">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <img src="static/images/noImagesYet.png" class="img-rounded small-image"/>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <div class="row">
+                <h1>{{ idea.title }}</h1>
+                <p>by {{ idea.creator }}</p>
+                <br>
+                <span> {{ idea.description | limitTo: 400 }}</span>
+            </div>
+            <div class="row options-panel">
+                <div class="progress tiny-progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" style="width: {{ progress }}%;">
+                    </div>
+                </div>
+                <table class="options-table">
+                    <thead>
+                        <tr>
+                            <th>Assigned</th>
+                            <th>Min assigned</th>
+                            <th>Votes</th>
+                            <th>Comments</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>{{ idea.assigned.length }}</td>
+                        <td>{{ idea.minAssignes }}</td>
+                        <td>{{ idea.votes.length }}</td>
+                        <td>{{ idea.comments.length }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
