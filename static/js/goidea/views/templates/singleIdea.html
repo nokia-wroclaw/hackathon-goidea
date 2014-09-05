@@ -1,13 +1,13 @@
 <div class="single-idea-container">
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-            <a ui-sref="default.details({id: idea.id})">
+            <a ui-sref="default.details({id: idea.Id})">
                 <img ng-src="static/images/noImagesYet.png" class="img-rounded small-image"/>
             </a>
         </div>
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
             <div class="row">
-                <a ui-sref="default.details({id: idea.id})">
+                <a ui-sref="default.details({id: idea.Id})">
                     <h1>{{ idea.Title }}</h1>
                 </a>
                 <p>by {{ idea.Creator.Fullname }}</p>
