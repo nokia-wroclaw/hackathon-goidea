@@ -1,3 +1,46 @@
-<!-- partials/state2.html -->
-<h1>State 2</h1>
-<hr/>
+<div ng-controller="edit">
+    <form role="form">
+        <div class="form-group-lg">
+            <label for="title">Title</label>
+            <input id="title" placeholder="" class="form-control" ng-model="idea.title">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" placeholder="" class="form-control" ng-model="idea.description">
+            </textarea>
+        </div>
+        <div class="form-group">
+            <label for="proposedDate">Proposed date</label>
+            <input id="proposedDate" placeholder="" class="form-control" ng-model="idea.proposedDate">
+        </div>
+        <div class="form-group">
+            <label for="Icon">Icon</label>
+            <input id="Icon" placeholder="" class="form-control" ng-model="idea.icon">
+        </div>
+        <div class="form-group">
+            <label for="minAssignees">Minimum assignees</label>
+            <input id="minAssignees" placeholder="" class="form-control" ng-model="idea.minAssignees">
+        </div>
+        <div class="form-group">
+            <span><b>Creator: </b></span><span>{{idea.creator}}</span>
+            <span><b>Status: </b></span><span>{{idea.status}}</span>
+            <span><b>Creation Date: </b></span><span>{{idea.creationDate}}</span>
+        </div>
+
+        <div class="buttons buttons-update" ng-hide="!isSaved()">
+            <button class="btn btn-primary">Save</button>
+            <button class="btn btn-danger">Delete</button>
+        </div>
+        <div class="buttons buttons-insert" ng-hide="isSaved()">
+            <button class="btn btn-success">Create</button>
+        </div>
+        <!--add idea.comments -->
+        <!--add idea.attachments -->
+        <!--add idea.votes-->
+        <!--add idea.assignees -->
+        <!--add status control -->
+    </form>
+    <hr/>
+</div>
+
+
