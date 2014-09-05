@@ -1,5 +1,10 @@
-define(['angular', '../namespace'], function(ng, namespace) {
+define(['angular',
+  '../namespace',
+  'angular-elastic'
+], function(ng, namespace) {
   'use strict';
 
-  return ng.module(namespace + '.directives', []);
+  return ng.module(namespace + '.directives', [
+    'monospaced.elastic'
+  ]);
 });
