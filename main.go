@@ -5,7 +5,6 @@ import (
 	"./models"
 	"github.com/astaxie/beego/orm"
 	_ "./routers"
-//	"./modules"
 	"github.com/astaxie/beego"
 )
 
@@ -18,14 +17,8 @@ func init() {
 }
 
 func main() {
-	//	config := new(modules.Configuration)
-	//	auth := new(modules.Authentication)
-	//	auth.Login(config.Key("xacas"), "user", "pass");
-
 	// Usage: go run main.go orm syncdb -force=1
-	orm.RunCommand()
+	// orm.RunCommand()
 
 	beego.Run()
 }
-
-
