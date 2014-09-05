@@ -25,3 +25,10 @@ type User struct {
 	MyIdeas  []*Idea `orm:"reverse(many)" json:"-"`
 	Ideas    []*Idea `orm:"reverse(many)" json:"-"`
 }
+
+type File struct {
+	Id           int
+	Title        string    `orm:"size(100)"`
+	Filename     string    `orm:"size(100)"`
+	CreationDate time.Time `orm:"auto_now_add;type(datetime)"`
+}
