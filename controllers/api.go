@@ -73,7 +73,8 @@ func (this *IdeaController) Put() {
 	idea := models.Idea{}
 	json.Unmarshal(this.Ctx.Input.RequestBody, &idea)
 	query := models.Idea{Id:idea.Id}
-
+	log.Println(idea)
+	log.Println(idea.Assignees[0])
 	this.upsert(&query, &idea)
 	this.respond(&idea)
 }

@@ -1,15 +1,16 @@
 package controllers
 
 import (
+	"encoding/json"
 	"net/http"
 	"./../modules"
 	"github.com/astaxie/beego"
 )
 
-const (
-	FieldUsername = "username"
-	FieldPassword = "password"
-)
+type Credentials struct {
+	Username string
+	Password string
+}
 
 type AuthController struct {
 	beego.Controller
@@ -32,9 +33,9 @@ func (this *AuthController) Delete() {
 func (this *AuthController) Post() {
 	config := new(modules.Configuration)
 	auth := new(modules.Authentication)
-	username := this.GetString(FieldUsername)
-	password := this.GetString(FieldPassword)
-	login := auth.Login(config.Key("xacas"), username, password)
+	credentials := new(Credentials)
+	json.Unmarshal(this.Ctx.Input.RequestBody, &credentials)
+	login := auth.Login(config.Key("xacas"), credentials.Username, credentials.Password)
 	if login {
 		this.SetSession("user", auth.Entity)
 		http.Error(this.Ctx.ResponseWriter, "true", 200)

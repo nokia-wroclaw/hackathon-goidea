@@ -7,12 +7,17 @@
         </div>
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
             <div class="row">
+              <div class="col-md-8">
                 <a ui-sref="default.details({id: idea.Id})">
-                    <h1>{{ idea.Title }}</h1>
+                  <h1>{{ idea.Title }}</h1>
                 </a>
                 <p>by {{ idea.Creator.Fullname }}</p>
                 <br>
                 <span> {{ idea.Description | limitTo: 400 }}</span>
+              </div>
+              <div class="col-md-4">
+                <button ng-click="assign()">Assign</button>
+              </div>
             </div>
             <div class="row options-panel">
                 <div class="progress tiny-progress">

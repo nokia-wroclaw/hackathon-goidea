@@ -8,7 +8,7 @@ define(['./module'], function (services) {
     var service = {
       authenticate: function (username, password) {
         var deffered = $q.defer();
-        $http.post('/auth', {username: username, password: password})
+        $http.post('/auth', {Username: username, Password: password})
           .success(function () {
             deffered.resolve();
           })
