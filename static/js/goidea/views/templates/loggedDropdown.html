@@ -1,16 +1,18 @@
-<li class="dropdown">
-    <a class="dropdown-toggle" href='#' data-toggle='dropdown'>
-        <i class="fa fa-user fa-lg fa-1"></i>
-    </a>
-    <ul class="dropdown-menu" role='menu'>
-        <li class="dropdown-header">Macio </li>
-        <li class="divider">Macio </li>
-        <li>
-            <a href="mailto:net_eng.support@nsn.com?subject=Go Idea Support.">
-                Contact
-                <i class="fa fa-envelope"></i>
-            </a>
-        </li>
-        <li><a href="">Logout </a> </li>
-    </ul>
-</li>
+<ul class='nav navbar-nav navbar-right'>
+    <li class="dropdown">
+        <a class="dropdown-toggle" href='#' data-toggle='dropdown'>
+            <i class="fa fa-user fa-lg fa-1"></i>
+        </a>
+        <ul class="dropdown-menu" role='menu'>
+            <li class="dropdown-header">{{user.Username}} </li>
+            <li class="divider">{{user.Username}} </li>
+            <li>
+                <a href="mailto:net_eng.support@nsn.com?subject=Go Idea Support.">
+                    Contact
+                    <i class="fa fa-envelope"></i>
+                </a>
+            </li>
+            <li><a href="">Logout </a> </li>
+        </ul>
+    </li>
+</ul>
