@@ -6,7 +6,7 @@ import (
 )
 
 type ApiRequest struct {
-	Collection string
+	Entity string
 	Filter map[string]string
 	OrderBy []string
 	Limit uint
@@ -19,9 +19,9 @@ func NewApiRequest(payload []byte) *ApiRequest {
 	return request
 }
 
-func (this *ApiRequest) GetQuery(collectionName string) orm.QuerySeter {
+func (this *ApiRequest) GetQuery(tableName string) orm.QuerySeter {
 	o := orm.NewOrm()
-	queryTable := o.QueryTable(collectionName)
+	queryTable := o.QueryTable(tableName)
 	for key, value := range this.Filter {
 		queryTable = queryTable.Filter(key, value)
 	}

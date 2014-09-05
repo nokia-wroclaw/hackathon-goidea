@@ -1,0 +1,4 @@
+xacas:
+    url: 'url'
+    serviceName: 'name@variant'
+    password: 'password'
