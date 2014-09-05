@@ -77,3 +77,8 @@ h1 {
 p {
     margin: 0px 0px 10px;
 }
+
+.btn-group.btn-group-right {
+  float: right;
+  margin-right: 1em;
+}
