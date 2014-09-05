@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"net/http"
 	"./../modules"
 	"github.com/astaxie/beego"
 )
@@ -15,13 +16,17 @@ type AuthController struct {
 }
 
 func (this *AuthController) Get() {
-	this.Data["json"] = this.GetSession("user")
-	this.ServeJson()
+	user := this.GetSession("user")
+	if user != nil {
+		this.Data["json"] = user
+		this.ServeJson()
+	}
+	this.Abort("403")
 }
 
 func (this *AuthController) Delete() {
 	this.DelSession("user")
-	this.ServeJson()
+	http.Error(this.Ctx.ResponseWriter, "true", 200)
 }
 
 func (this *AuthController) Post() {
@@ -32,9 +37,9 @@ func (this *AuthController) Post() {
 	login := auth.Login(config.Key("xacas"), username, password)
 	if login {
 		this.SetSession("user", auth.Entity)
+		http.Error(this.Ctx.ResponseWriter, "true", 200)
 	} else {
 		this.DelSession("user")
+		http.Error(this.Ctx.ResponseWriter, "false", 403)
 	}
-	this.Data["json"] = login
-	this.ServeJson()
 }
