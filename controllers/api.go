@@ -18,6 +18,11 @@ func (this *BaseController) getRequest() *requests.ApiRequest {
 	return requests.NewApiRequest(this.Ctx.Input.RequestBody)
 }
 
+func (this *BaseController) respond(entity interface{}) {
+	this.Data["json"] = entity
+	this.ServeJson()
+}
+
 func (this *BaseController) upsert(query interface{}, entity interface{}) {
 	o := orm.NewOrm()
 	err := o.Read(query)
@@ -45,21 +50,17 @@ type IdeaController struct {
 
 func (this *IdeaController) Post() {
 	var ideas []*models.Idea
-
 	this.getRequest().GetQuery("idea").All(&ideas)
-
-	this.Data["json"] = &ideas
-	this.ServeJson()
+	this.respond(&ideas)
 }
 
 func (this *IdeaController) Put() {
 	idea := models.Idea{}
 	json.Unmarshal(this.Ctx.Input.RequestBody, &idea)
 	query := models.Idea{Id:idea.Id}
-	this.upsert(&query, &idea)
 
-	this.Data["json"] = &idea
-	this.ServeJson()
+	this.upsert(&query, &idea)
+	this.respond(&idea)
 }
 //##########################################################
 type UserController struct {
@@ -68,21 +69,17 @@ type UserController struct {
 
 func (this *UserController) Post() {
 	var users []*models.User
-
 	this.getRequest().GetQuery("user").All(&users)
-
-	this.Data["json"] = &users
-	this.ServeJson()
+	this.respond(&users)
 }
 
 func (this *UserController) Put() {
 	user := models.User{}
 	json.Unmarshal(this.Ctx.Input.RequestBody, &user)
 	query := models.User{Id:user.Id}
+	
 	this.upsert(&query, &user)
-
-	this.Data["json"] = &user
-	this.ServeJson()
+	this.respond(&user)
 }
 //##########################################################
 
