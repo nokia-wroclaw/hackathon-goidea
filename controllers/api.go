@@ -39,13 +39,13 @@ func (this *BaseController) upsert(query interface{}, entity interface{}) {
 		if id, err := o.Insert(entity); err == nil {
 			log.Println("Entity inserted: ", id)
 		} else {
-			log.Println("ERROR: inserting", err)
+			log.Fatal("ERROR: inserting", err)
 		}
 	} else {
 		if id, err := o.Update(entity); err == nil {
 			log.Println("Entity updated: ", id)
 		} else {
-			log.Println("ERROR: updating id ", id, err)
+			log.Fatal("ERROR: updating id ", id, err)
 		}
 	}
 	o.Read(entity)
@@ -111,16 +111,6 @@ func (this *CommentController) Put() {
 	query := models.Comment{Id:comment.Id}
 
 	this.upsert(&query, &comment)
-
-//	o := orm.NewOrm()
-//	idea := models.Idea{Id:comment.Id}
-//	o.Read(&idea)
-//	m2m := o.QueryM2M(&idea, "Comments")
-//	m2m.Add(comment)
-//	o.Read(&idea)
-//	this.respond(&idea)
-//
-
 	this.respond(&comment)
 }
 
