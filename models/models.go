@@ -15,6 +15,8 @@ type Idea struct {
 	Voters       []*User    `orm:"rel(m2m);rel_table(user_idea_votes)"`
 	Assignees    []*User    `orm:"rel(m2m);rel_table(user_idea_assignees)"`
 	Comments     []*Comment `orm:"reverse(many);on_delete(cascade)"`
+	MinAssignees int 		`orm:"default(1)"`
+	MaxAssignees int 		`orm:"null"`
 }
 
 type User struct {
