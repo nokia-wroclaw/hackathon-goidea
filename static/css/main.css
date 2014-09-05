@@ -55,7 +55,8 @@ h1 {
 }
 
 .comments-container {
-    background-color: lightgrey;
+    margin-top: 25px;
+# background-color: lightgrey;
 }
 
 .single-idea-container {

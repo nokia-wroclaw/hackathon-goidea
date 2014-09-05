@@ -8,14 +8,16 @@ define(['./module'], function(services) {
         var result = {};
 
         var filter = function(){
-          var idea = _.filter(data,function(item){
-            return item.ideaId == id;
+          var comments = _.filter(data,function(item){
+            return item.ideaId === id;
           });
-          _.extend(result,idea);
+          _.extend(result,comments);
           if (_.isFunction(callback)) {
             callback(result);
           }
         };
+        filter();
+
         return result;
       }
     };
