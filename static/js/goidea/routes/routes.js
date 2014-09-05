@@ -1,24 +1,28 @@
-define(['angular', '../namespace', 'require', 'ui-router'],
+define(['angular', '../namespace', 'require', 'ui-router', 'ui.calendar'],
   function (angular, namespace, require) {
     'use strict';
 
-    return angular.module(namespace + '.routes', ['ui.router'])
+    return angular.module(namespace + '.routes', ['ui.router', 'ui.calendar'])
       .config(function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise("state1");
+        $urlRouterProvider.otherwise("ideas");
         $stateProvider
           .state('default', {
             url: "/",
             templateUrl: require.toUrl('./../views/default.html')
-          }).state('default.listOfIdea', {
-            url: "state1",
-            templateUrl: require.toUrl('./../views/state1.html')
+          }).state('default.list', {
+            url: "ideas",
+            templateUrl: require.toUrl('./../views/list.html')
           })
           .state('default.edit', {
-            url: "edit/:id",
+            url: "edit/idea-:id",
+            templateUrl: require.toUrl('./../views/edit.html')
+          })
+          .state('default.new', {
+            url: "edit/idea",
             templateUrl: require.toUrl('./../views/edit.html')
           })
           .state('default.details', {
-            url: "details/:id",
+            url: "details/idea-:id",
             templateUrl: require.toUrl('./../views/details.html')
           });
       });

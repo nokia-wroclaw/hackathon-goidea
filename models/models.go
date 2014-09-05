@@ -5,7 +5,7 @@ import (
 )
 
 type Idea struct {
-	Id           int
+	Id           int `orm:"pk;auto"`
 	Title        string    `orm:"size(100)"`
 	CreationDate time.Time `orm:"auto_now_add;type(datetime)"`
 	EventDate    time.Time `orm:"type(datetime)"`
@@ -17,11 +17,12 @@ type Idea struct {
 }
 
 type User struct {
-	Id       int
+	Id       int `orm:"pk;auto"`
 	Key      string  `orm:"size(100)"`
 	Username string  `orm:"size(100)"`
 	Fullname string  `orm:"size(100)"`
 	Mail     string  `orm:"size(100)"`
+	Role     string  `orm:"size(10);default(BASIC)"`
 	MyIdeas  []*Idea `orm:"reverse(many)" json:"-"`
 	Ideas    []*Idea `orm:"reverse(many)" json:"-"`
 }

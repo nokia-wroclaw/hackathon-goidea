@@ -4,13 +4,16 @@ define([], function () {
     return {
         baseUrl: 'static/js',
         paths: {
-            'angular': '../../static/components/angularjs/angular.min',
+            'angular': '../../static/components/angularjs/angular',
             'ui-router': '../../static/components/angular-ui-router/release/angular-ui-router.min',
             'bootstrap': '../../static/components/bootstrap/dist/js/bootstrap.min',
             '_': '../../static/components/lodash/dist/lodash.min',
             'jquery': '../../static/components/jquery/dist/jquery.min',
             'bootstrapcss': ['../../static/components/bootstrap/dist/css/bootstrap.min'],
-            'fontawesome': ['../../static/components/fontawesome/css/font-awesome.min']
+            'fontawesome': ['../../static/components/fontawesome/css/font-awesome.min'],
+            'ui.calendar': ['../../static/components/angular-ui-calendar/src/calendar'],
+            'fullcalendar': ['../../static/components/fullcalendar/fullcalendar.min'],
+            'angular-elastic' : '../../static/components/angular-elastic/elastic'
         },
         map: {
             '*': {
@@ -41,10 +44,13 @@ define([], function () {
             'ui-router': {
                 'deps': ['angular']
             },
+            'angular-elastic' : {deps : ['angular']},
             'csses': {
                 'deps': ['css!bootstrapcss']
+            },
+            'ui.calendar': {
+                'deps': ['angular', 'fullcalendar']
             }
-
         }
     };
 });

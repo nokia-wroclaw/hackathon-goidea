@@ -22,7 +22,7 @@ func main() {
 	//	auth.Login(config.Key("xacas"), "user", "pass");
 
 	// Usage: go run main.go orm syncdb -force=1
-	// orm.RunCommand()
+	orm.RunCommand()
 
 	beego.Run()
 }
