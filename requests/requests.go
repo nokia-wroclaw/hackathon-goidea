@@ -1,6 +1,7 @@
 package requests
 
 import (
+	"encoding/json"
 	"github.com/astaxie/beego/orm"
 )
 
@@ -10,6 +11,12 @@ type ApiRequest struct {
 	OrderBy []string
 	Limit uint
 	Offset uint
+}
+
+func NewApiRequest(payload []byte) *ApiRequest {
+	request := new(ApiRequest)
+	json.Unmarshal(payload, &request)
+	return request
 }
 
 func (this *ApiRequest) GetQuery(collectionName string) orm.QuerySeter {

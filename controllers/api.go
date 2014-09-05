@@ -2,7 +2,6 @@ package controllers
 
 import (
 	//"log"
-	"encoding/json"
 	"github.com/astaxie/beego"
 	"./../models"
 	"./../requests"
@@ -14,9 +13,7 @@ type ApiController struct {
 }
 
 func (this *ApiController) getRequest() *requests.ApiRequest {
-	request := requests.ApiRequest{}
-	json.Unmarshal(this.Ctx.Input.RequestBody, &request)
-	return &request
+	return requests.NewApiRequest(this.Ctx.Input.RequestBody)
 }
 
 func (this *ApiController) Ideas() {
@@ -25,6 +22,15 @@ func (this *ApiController) Ideas() {
 	this.getRequest().GetQuery("idea").All(&ideas)
 
 	this.Data["json"] = &ideas
+	this.ServeJson()
+}
+
+func (this *ApiController) Users() {
+	var users []*models.User
+
+	this.getRequest().GetQuery("user").All(&users)
+
+	this.Data["json"] = &users
 	this.ServeJson()
 }
 
