@@ -2,6 +2,9 @@ package controllers
 
 import (
 	"log"
+	"time"
+	"strings"
+	"strconv"
 	"encoding/json"
 	"github.com/astaxie/beego"
 	"./../models"
@@ -9,7 +12,13 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
+const (
+	FilesDir = "./files"
+	FilesField = "file"
+)
+
 //##########################################################
+
 type BaseController struct {
 	beego.Controller
 }
@@ -43,6 +52,7 @@ func (this *BaseController) upsert(query interface{}, entity interface{}) {
 }
 
 //##########################################################
+
 type IdeaController struct {
 	BaseController
 }
@@ -61,7 +71,9 @@ func (this *IdeaController) Put() {
 	this.upsert(&query, &idea)
 	this.respond(&idea)
 }
+
 //##########################################################
+
 type UserController struct {
 	BaseController
 }
@@ -80,7 +92,9 @@ func (this *UserController) Put() {
 	this.upsert(&query, &user)
 	this.respond(&user)
 }
+
 //##########################################################
+
 type CommentController struct {
 	BaseController
 }
@@ -109,8 +123,33 @@ func (this *CommentController) Put() {
 
 	this.respond(&comment)
 }
+
 //##########################################################
 
+type FileController struct {
+	BaseController
+}
 
+func (this *FileController) Post() {
+	_, header, _ := this.GetFile(FilesField);
+	filename := strings.Replace(strconv.FormatInt(time.Now().Unix(), 10) + " " + header.Filename, " ", "_", -1);
+	errorSave := this.SaveToFile(FilesField, FilesDir + "/" + filename);
+	if errorSave != nil {
+		log.Fatal(errorSave)
+	}
 
+	o := orm.NewOrm()
+	file := models.File{}
+	file.Title = header.Filename
+	file.Filename = filename
+	_, errorInsert := o.Insert(&file)
+	if errorInsert != nil {
+		log.Fatal(errorInsert)
+	}
 
+	o.Read(&file)
+	this.Data["json"] = &file
+	this.ServeJson()
+}
+
+//##########################################################

@@ -12,6 +12,7 @@ import (
 func init() {
 	orm.RegisterModel(new(models.Idea))
 	orm.RegisterModel(new(models.User))
+	orm.RegisterModel(new(models.File))
 	orm.RegisterModel(new(models.Comment))
 	orm.RegisterDataBase("default", "postgres", "user=goidea password=goidea host=localhost port=5432 dbname=goidea sslmode=disable", 30)
 }

@@ -37,3 +37,10 @@ type Comment struct {
 	User         *User     `orm:"rel(fk)"`
 	Idea         *Idea     `orm:"rel(fk)"`
 }
+
+type File struct {
+	Id           int
+	Title        string    `orm:"size(100)"`
+	Filename     string    `orm:"size(100)"`
+	CreationDate time.Time `orm:"auto_now_add;type(datetime)"`
+}
