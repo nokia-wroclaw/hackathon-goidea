@@ -60,7 +60,7 @@ define(['./module'], function(services) {
       proposedDate: '20.12.2017',
       votes: ['ja', 'oni'],
       assigned: ['oni', 'ona'],
-      attachments: [],
+      attachments: ['stample.jpeg', 'Example.svg'],
       icon: '',
       comments: '',
       minAssignees: 3
