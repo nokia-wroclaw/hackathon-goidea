@@ -1,38 +1,40 @@
 <div ng-controller="edit" class="container">
     <form role="form">
+        <input hidden ng-model="idea.Id">
         <div class="form-group-lg">
             <label for="title">Title</label>
-            <input id="title" placeholder="" class="form-control" ng-model="idea.title">
+            <input id="title" placeholder="" class="form-control" ng-model="idea.Title">
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea id="description" placeholder="" class="form-control msd-elastic" ng-model="idea.description">
+            <textarea id="description" placeholder="" class="form-control msd-elastic" ng-model="idea.Description">
             </textarea>
         </div>
         <div class="form-group">
             <label for="proposedDate">Proposed date</label>
-            <input id="proposedDate" placeholder="" class="form-control" ng-model="idea.event_date">
+            <input id="proposedDate" placeholder="" class="form-control" ng-model="idea.EventData">
         </div>
         <div class="form-group">
             <label for="Icon">Icon</label>
-            <input id="Icon" placeholder="" class="form-control" ng-model="idea.icon">
+            <input id="Icon" placeholder="" class="form-control" ng-model="idea.Icon">
         </div>
         <div class="form-group">
             <label for="minAssignees">Minimum assignees</label>
-            <input id="minAssignees" placeholder="" class="form-control" ng-model="idea.minAssignees">
+            <input id="minAssignees" placeholder="" class="form-control" ng-model="idea.MinAssignees">
         </div>
         <div class="form-group">
-            <span><b>Creator: </b></span><span>{{idea.creator_id1}}</span>
-            <span><b>Status: </b></span><span>{{idea.status}}</span>
-            <span><b>Creation Date: </b></span><span>{{idea.creation_date}}</span>
+            <span><b>Creator: </b></span><span>{{idea.Creator}}</span>
+            <span><b>Status: </b></span><span>{{idea.Status}}</span>
+            <span><b>Votes: </b></span><span>{{idea.Votes}}</span>
+            <span><b>Creation Date: </b></span><span>{{idea.CreationDate}}</span>
         </div>
 
         <div class="buttons buttons-update" ng-hide="!isSaved()">
-            <button class="btn btn-primary">Save</button>
+            <button class="btn btn-primary" ng-click="update(idea)">Save</button>
             <button class="btn btn-danger">Delete</button>
         </div>
         <div class="buttons buttons-insert" ng-hide="isSaved()">
-            <button class="btn btn-success">Create</button>
+            <button class="btn btn-success" ng-click="update(idea)">Create</button>
         </div>
         <!--add idea.comments -->
         <!--add idea.attachments -->
