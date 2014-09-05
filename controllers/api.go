@@ -18,6 +18,25 @@ func (this *BaseController) getRequest() *requests.ApiRequest {
 	return requests.NewApiRequest(this.Ctx.Input.RequestBody)
 }
 
+func (this *BaseController) upsert(query interface{}, entity interface{}) {
+	o := orm.NewOrm()
+	err := o.Read(query)
+	if err == orm.ErrNoRows || err == orm.ErrMissPK {
+		if id, err := o.Insert(entity); err == nil {
+			log.Println("ERROR: inserting")
+		} else {
+			log.Println("Entity inserted: ", id)
+		}
+	} else {
+		if id, err := o.Update(entity); err == nil {
+			log.Println("ERROR: updating id ", id)
+		} else {
+			log.Println("Entity updated: ", id)
+		}
+	}
+	o.Read(entity)
+}
+
 // TODO reflection, not copy paste
 //##########################################################
 type IdeaController struct {
@@ -34,28 +53,10 @@ func (this *IdeaController) Post() {
 }
 
 func (this *IdeaController) Put() {
-	o := orm.NewOrm()
 	idea := models.Idea{}
 	json.Unmarshal(this.Ctx.Input.RequestBody, &idea)
-
 	query := models.Idea{Id:idea.Id}
-	err := o.Read(&query)
-
-	if err == orm.ErrNoRows || err == orm.ErrMissPK {
-		if id, err := o.Insert(&idea); err == nil {
-			log.Println("ERROR: inserting")
-		} else {
-			log.Println("Entity inserted: ", id)
-		}
-	} else {
-		if id, err := o.Update(&idea); err == nil {
-			log.Println("ERROR: updating id ", id)
-		} else {
-			log.Println("Entity updated: ", id)
-		}
-	}
-
-	o.Read(&idea)
+	this.upsert(&query, &idea)
 
 	this.Data["json"] = &idea
 	this.ServeJson()
@@ -75,28 +76,10 @@ func (this *UserController) Post() {
 }
 
 func (this *UserController) Put() {
-	o := orm.NewOrm()
 	user := models.User{}
 	json.Unmarshal(this.Ctx.Input.RequestBody, &user)
-
 	query := models.User{Id:user.Id}
-	err := o.Read(&query)
-
-	if err == orm.ErrNoRows || err == orm.ErrMissPK {
-		if id, err := o.Insert(&user); err == nil {
-			log.Println("ERROR: inserting")
-		} else {
-			log.Println("Entity inserted: ", id)
-		}
-	} else {
-		if id, err := o.Update(&user); err == nil {
-			log.Println("ERROR: updating id ", id)
-		} else {
-			log.Println("Entity updated: ", id)
-		}
-	}
-
-	o.Read(&user)
+	this.upsert(&query, &user)
 
 	this.Data["json"] = &user
 	this.ServeJson()
