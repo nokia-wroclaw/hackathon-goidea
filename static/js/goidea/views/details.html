@@ -1,18 +1,18 @@
-<div class="container-fluid">
+<div ng-controller="Details" class="col-lg-8 col-md-8 col-sm-8 col-xs-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 ">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h2> Title{{Title}} </h2>
-                </div>
-                <div class="panel-body">
-                    BODY
-
-                </div>
-            </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <img src="static/images/noImagesYet.png" class="img-rounded details-small-image"/>
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <h1>{{ idea.title }}</h1>
+            <p>by {{ idea.creator }}</p>
+            <h3>{{ idea.assigned.length }}</h3><p>Assigned</p>
+            <h3>{{ idea.minAssignes }}</h3><p>Min assigned</p>
+            <h3>{{ idea.votes.length }}</h3><p>Votes</p>
+            <!-- <h3>{{ idea.comments.length }}</h3><p>Comments</p> -->
+        </div>
     </div>
-
+    <div class="row">
+        <span> {{ idea.description }}</span>
+    </div>
 </div>
