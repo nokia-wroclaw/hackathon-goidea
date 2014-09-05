@@ -54,6 +54,11 @@ h1 {
     float: left;
 }
 
+.idea-comment {
+    background-color: #d1d1d1;
+    margin-bottom: 10px;
+}
+
 .comments-container {
     margin-top: 25px;
 # background-color: lightgrey;
