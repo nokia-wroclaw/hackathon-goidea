@@ -12,7 +12,8 @@ define([], function () {
             'bootstrapcss': ['../../static/components/bootstrap/dist/css/bootstrap.min'],
             'fontawesome': ['../../static/components/fontawesome/css/font-awesome.min'],
             'ui.calendar': ['../../static/components/angular-ui-calendar/src/calendar'],
-            'fullcalendar': ['../../static/components/fullcalendar/fullcalendar.min']
+            'fullcalendar': ['../../static/components/fullcalendar/fullcalendar.min'],
+            'angular-elastic' : '../../static/components/angular-elastic/elastic'
         },
         map: {
             '*': {
@@ -43,6 +44,7 @@ define([], function () {
             'ui-router': {
                 'deps': ['angular']
             },
+            'angular-elastic' : {deps : ['angular']},
             'csses': {
                 'deps': ['css!bootstrapcss']
             },

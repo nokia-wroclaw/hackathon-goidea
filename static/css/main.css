@@ -88,3 +88,7 @@ p {
   float: right;
   margin-right: 1em;
 }
+
+textarea.msd-elastic{
+    resize: none;
+}
