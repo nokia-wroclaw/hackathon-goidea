@@ -24,6 +24,9 @@ _testmain.go
 *.exe
 .idea
 
+bin/
+src/
+
 node_modules
 static/components/
 
