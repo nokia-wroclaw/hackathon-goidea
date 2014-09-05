@@ -1,7 +1,9 @@
 package modules
 
 import (
+	"./../models"
 	"encoding/json"
+	"github.com/astaxie/beego/orm"
 )
 
 const (
@@ -43,8 +45,9 @@ type ResponseUser struct {
 // ============================================================
 
 type Authentication struct {
-	Token string
-	User  ResponseUser
+	Token  string
+	User   ResponseUser
+	Entity models.User
 }
 
 func (this *Authentication) Login(config map[string]interface{}, username string, password string) bool {
@@ -53,6 +56,19 @@ func (this *Authentication) Login(config map[string]interface{}, username string
 	if success {
 		user := this.getUserData(config, token);
 		this.User = user
+		o := orm.NewOrm()
+		query := models.User{
+			Key: user.EmployeeNumber,
+			Username: user.UserId,
+			Fullname: user.DisplayName,
+			Mail: user.Mail,
+		}
+		_, id, error := o.ReadOrCreate(&query, "Key", "Username", "Fullname", "Mail")
+		if error == nil {
+			entity := models.User{Id:int(id)}
+			o.Read(&entity)
+			this.Entity = entity;
+		}
 	}
 	return success
 }

@@ -39,7 +39,7 @@ type Comment struct {
 }
 
 type File struct {
-	Id           int
+	Id           int       `orm:"pk;auto"`
 	Title        string    `orm:"size(100)"`
 	Filename     string    `orm:"size(100)"`
 	CreationDate time.Time `orm:"auto_now_add;type(datetime)"`
