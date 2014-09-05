@@ -18,22 +18,22 @@ type Idea struct {
 }
 
 type User struct {
-	Id       int        `orm:"pk;auto"`
-	Key      string     `orm:"size(100)"`
-	Username string     `orm:"size(100)"`
-	Fullname string     `orm:"size(100)"`
-	Mail     string     `orm:"size(100)"`
-	Role     string     `orm:"size(10);default(BASIC)"`
-	MyIdeas  []*Idea    `orm:"reverse(many)" json:"-"`
-	Votes    []*Idea    `orm:"reverse(many)" json:"-"`
-	Ideas    []*Idea    `orm:"reverse(many)" json:"-"`
-	Comments []*Comment `orm:"reverse(many)" json:"-"`
+	Id         int        `orm:"pk;auto"`
+	Key        string     `orm:"size(100)"`
+	Username   string     `orm:"size(100)"`
+	Fullname   string     `orm:"size(100)"`
+	Mail       string     `orm:"size(100)"`
+	Role       string     `orm:"size(10);default(BASIC)"`
+	Created    []*Idea    `orm:"reverse(many)" json:"-"`
+	VotedOn    []*Idea    `orm:"reverse(many)" json:"-"`
+	AssignedTo []*Idea    `orm:"reverse(many)" json:"-"`
+	Comments   []*Comment `orm:"reverse(many)" json:"-"`
 }
 
 type Comment struct {
-	Id    int    `orm:"pk;auto"`
-	Title string `orm:"size(256)"`
-	Body  string `orm:"type(text)"`
-	User  *User  `orm:"rel(fk)"`
-	Idea  *Idea  `orm:"rel(fk)"`
+	Id           int       `orm:"pk;auto"`
+	CreationDate time.Time `orm:"auto_now_add;type(datetime)"`
+	Body         string    `orm:"type(text)"`
+	User         *User     `orm:"rel(fk)"`
+	Idea         *Idea     `orm:"rel(fk)"`
 }
