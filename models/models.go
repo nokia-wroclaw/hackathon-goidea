@@ -14,7 +14,7 @@ type Idea struct {
 	Creator      *User      `orm:"rel(fk)"`
 	Voters       []*User    `orm:"rel(m2m);rel_table(user_idea_votes)"`
 	Assignees    []*User    `orm:"rel(m2m);rel_table(user_idea_assignees)"`
-	Comments     []*Comment `orm:"reverse(many)"`
+	Comments     []*Comment `orm:"reverse(many);on_delete(cascade)"`
 }
 
 type User struct {
