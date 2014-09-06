@@ -23,9 +23,9 @@
             <input id="minAssignees" placeholder="" class="form-control" ng-model="idea.MinAssignees">
         </div>
         <div class="form-group">
-            <span><b>Creator: </b></span><span>{{idea.Creator}}</span>
+            <span><b>Creator: </b></span><span>{{idea.Creator.Fullname}}</span>
             <span><b>Status: </b></span><span>{{idea.Status}}</span>
-            <span><b>Votes: </b></span><span>{{idea.Votes}}</span>
+            <span><b>Votes: </b></span><span>{{idea.Votes.length}}</span>
             <span><b>Creation Date: </b></span><span>{{idea.CreationDate}}</span>
         </div>
 
