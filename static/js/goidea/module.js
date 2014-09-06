@@ -3,15 +3,17 @@ define(['angular',
     './controllers/index',
     './directives/index',
     './services/index',
-    './routes/routes'
+    './routes/routes',
+    'ui.bootstrap'
   ],
-  function(ng, namespace) {
+  function(angular, namespace) {
     'use strict';
 
-    return ng.module(namespace, [
-      namespace + '.controllers',
+    return angular.module(namespace, [
+        namespace + '.controllers',
         namespace + '.directives',
         namespace + '.services',
-        namespace + '.routes'
+        namespace + '.routes',
+        'ui.bootstrap'
     ]).run(function() {});
   });

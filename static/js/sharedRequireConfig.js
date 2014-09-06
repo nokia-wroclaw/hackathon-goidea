@@ -13,7 +13,8 @@ define([], function () {
             'fontawesome': ['../../static/components/fontawesome/css/font-awesome.min'],
             'ui.calendar': ['../../static/components/angular-ui-calendar/src/calendar'],
             'fullcalendar': ['../../static/components/fullcalendar/fullcalendar.min'],
-            'angular-elastic' : '../../static/components/angular-elastic/elastic'
+            'angular-elastic' : '../../static/components/angular-elastic/elastic',
+            'ui.bootstrap' : ['../../static/components/angular-bootstrap/ui-bootstrap-tpls.min']
         },
         map: {
             '*': {
@@ -50,6 +51,9 @@ define([], function () {
             },
             'ui.calendar': {
                 'deps': ['angular', 'fullcalendar']
+            },
+            'ui.bootstrap': {
+              'deps': ['angular', 'bootstrap', 'css!bootstrapcss']
             }
         }
     };

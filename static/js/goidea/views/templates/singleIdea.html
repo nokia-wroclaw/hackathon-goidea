@@ -16,7 +16,8 @@
                 <span> {{ idea.Description | limitTo: 400 }}</span>
               </div>
               <div class="col-md-4">
-                <button ng-click="assign()">Assign</button>
+                  <img ng-src="static/images/assign.png" ng-click="assign()" tooltip-placement="right" tooltip-html-unsafe="<h4>Assign me!</h4>" class="assign-vote-icons"/>
+                  <img ng-src="static/images/vote-icon.png" ng-click="vote()" tooltip-placement="left" tooltip-html-unsafe="<h4>Take a vote</h4>" class="assign-vote-icons"/>
               </div>
             </div>
             <div class="row options-panel">

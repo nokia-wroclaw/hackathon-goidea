@@ -25,6 +25,12 @@ h1 {
     text-rendering: optimizelegibility;
 }
 
+.assign-vote-icons {
+    height: 60px;
+    width: auto;
+    float: right;
+}
+
 .hero-unit h1 {
     margin-bottom: 0px;
     font-size: 60px;
