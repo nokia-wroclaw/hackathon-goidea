@@ -11,9 +11,9 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="upper-container">
         <div class="ui-view"></div>
     </div>
-<script src="/static/components/requirejs/require.js" data-main="static/js/main"></script>
+    <script src="/static/components/requirejs/require.js" data-main="static/js/main"></script>
 </body>
 </html>

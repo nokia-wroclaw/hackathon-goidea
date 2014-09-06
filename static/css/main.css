@@ -1,5 +1,6 @@
 body {
     margin: 0px;
+    overflow: hidden;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: 20px;
@@ -22,6 +23,9 @@ h1 {
     font-family: inherit;
     font-weight: bold;
     text-rendering: optimizelegibility;
+}
+.login-panel {
+    z-index: 2;
 }
 
 .hero-unit h1 {
@@ -65,15 +69,21 @@ h1 {
     float: left;
 }
 
+.upper-container {
+    overflow: hidden;
+}
+
 .container {
     position: absolute;
     overflow: auto;
     width: 100%;
-    height: calc(100% - 90px);
+    height: calc(100% - 51px);
+    top: 51px;
+    padding-top: 15px;
 }
 
 .idea-comment {
-#    background-color: #d1d1d1;
+    /*background-color: #d1d1d1;*/
     margin-bottom: 10px;
 }
 
@@ -82,7 +92,7 @@ h1 {
 }
 .comments-container {
     margin-top: 25px;
-# background-color: lightgrey;
+    /*background-color: lightgrey;*/
 }
 
 .single-idea-container {
