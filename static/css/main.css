@@ -41,6 +41,17 @@ h1 {
     color: inherit;
 }
 
+.user-avatar {
+    width: auto;
+    height: 60px;
+    float: left;
+    margin-right: 10px;
+}
+
+.idea-comment-head {
+    height: 60px;
+}
+
 .small-image {
     height: auto;
     width: 100%;
@@ -62,10 +73,13 @@ h1 {
 }
 
 .idea-comment {
-    background-color: #d1d1d1;
+#    background-color: #d1d1d1;
     margin-bottom: 10px;
 }
 
+.idea-comment-body {
+    padding-left: 8px;
+}
 .comments-container {
     margin-top: 25px;
 # background-color: lightgrey;

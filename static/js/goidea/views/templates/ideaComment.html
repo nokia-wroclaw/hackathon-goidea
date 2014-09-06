@@ -1,4 +1,8 @@
-<div class="idea-comment">
-    <p class="bg-success">{{ comment.date }}</p>
-    <span>{{ comment.creator }}:{{comment.comment}}</span>
+<div class="idea-comment img-rounded">
+    <div class="idea-comment-head">
+        <img src="static/images/user_avatar.png" class="user-avatar img-rounded"/>
+        <b>{{ comment.creator }}</b><br>
+        {{ comment.date }}
+    </div>
+    <span class="idea-comment-body">{{comment.comment}}</span>
 </div>

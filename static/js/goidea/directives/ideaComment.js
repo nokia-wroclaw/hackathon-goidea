@@ -7,10 +7,13 @@ define(['./module', 'require'], function(directives, require) {
       templateUrl: require.toUrl('./../views/templates/ideaComment.html'),
       replace: true,
       scope: {
-        comment: '='
+        comment: '=',
+        even: '@'
       },
 
       link: function(scope, element, attrs) {
+        scope.even = scope.even === 'true' ? true : false;
+        element.addClass(scope.even ? 'bg-success' : 'bg-info');
       }
     };
   });
