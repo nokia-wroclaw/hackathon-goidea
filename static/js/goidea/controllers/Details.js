@@ -6,20 +6,27 @@ define(['./module'], function(controllers) {
     $scope.comments = [];
     $scope.comment = '';
 
-    Ideas.getById(parseInt($stateParams.id), function(idea){
-      $scope.idea = idea;
-    });
+    $scope.loadIdea = function(){
+      Ideas.getById(parseInt($stateParams.id), function(idea){
+        $scope.idea = idea;
+      });
+    };
 
-    Comments.getCommentsForIdea(parseInt($stateParams.id), function(comments){
-      $scope.comments = comments;
-    });
+    $scope.loadComments = function(){
+      Comments.getCommentsForIdea(parseInt($stateParams.id), function(comments){
+        $scope.comments = comments;
+      });
+    };
 
     $scope.onCommentSave = function(){
       console.log($scope.comment);
-      Comments.insertCommentForIdea($scope.idea.Id, Math.floor(Math.random()*3)+1, $scope.comment).then(function(comment){
-        $scope.comments.push({a:'a'});
+      Comments.insertCommentForIdea($scope.idea.Id, $scope.comment).then(function(){
+        $scope.loadComments();
       });
       $scope.comment = '';
     };
+
+    $scope.loadIdea();
+    $scope.loadComments();
   });
 });

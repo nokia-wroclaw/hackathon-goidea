@@ -1,23 +1,29 @@
 define(['./module'], function(services) {
   'use strict';
 
-  services.factory('Comments', function($q, $http) {
+  services.factory('Comments', function($q, $http, User) {
 
     var service = {
-      insertCommentForIdea: function(ideaId, userId, comment){
-        var deferred = $q.defer();
-        $http.post('/api/comments', {
-          Body: comment,
-          User: userId,
-          Idea: ideaId
-        })
-          .success(function (comment) {
-            deferred.resolve(comment);
-          })
-          .error(function () {
-            deferred.reject();
-          });
-        return deferred.promise;
+      insertCommentForIdea: function(ideaId, comment){
+        return User.getLogged().then(function(user){
+          return {
+            Body: comment,
+            User: {
+              Id: user.Id
+            },
+            Idea: {
+              Id: ideaId
+            }
+          };
+        }).then(function(putData){
+          return $http.put('/api/comments', putData)
+            .success(function (comment) {
+              return comment.data;
+            })
+            .error(function () {
+              $q.reject();
+            });
+        });
       },
 
       getCommentsForIdea : function(id, callback){
