@@ -20,12 +20,12 @@ define(['./module'], function(controllers) {
 
     $scope.assign = function() {
       User.getLogged().then(function (user) {
-        Ideas.assign(scope.idea, user);
+        Ideas.assign($scope.idea, user);
       });
     };
     $scope.vote = function() {
       User.getLogged().then(function (user){
-        Ideas.vote(scope.idea, user);
+        Ideas.vote($scope.idea, user);
       });
     }
 

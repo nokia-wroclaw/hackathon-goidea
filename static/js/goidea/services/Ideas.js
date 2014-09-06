@@ -14,7 +14,12 @@ define(['./module'], function (services) {
                 var deferred = $q.defer();
                 $http.post('/api/ideas')
                     .success(function (ideas) {
-                        deferred.resolve(ideas);
+                        deferred.resolve(_.map(ideas, function(idea){
+                          idea.Assignees = idea.Assignees || [];
+                          idea.Voters = idea.Voters || [];
+                          idea.Comments = idea.Comments || [];
+                          return idea;
+                        }));
                     })
                     .error(function () {
                         deferred.reject();
