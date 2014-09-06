@@ -24,9 +24,6 @@ h1 {
     font-weight: bold;
     text-rendering: optimizelegibility;
 }
-.login-panel {
-    z-index: 2;
-}
 
 .hero-unit h1 {
     margin-bottom: 0px;
@@ -45,6 +42,11 @@ h1 {
     color: inherit;
 }
 
+.goidea-calendar{
+    position: fixed;
+    width:20%;
+    right: 15px;
+}
 .user-avatar {
     width: auto;
     height: 60px;
