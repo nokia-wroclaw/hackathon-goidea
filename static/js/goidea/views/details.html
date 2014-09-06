@@ -5,14 +5,14 @@
         </div>
         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
             <h1>{{ idea.Title }}</h1>
-            <p>by {{ idea.Creator }}</p>
+            <p>by {{ idea.Creator.Fullname }}</p>
             <h3>{{ idea.Assignees.length }}</h3><p>Assigned</p>
-            <h3>{{ idea.MinAssignes }}</h3><p>Min assigned</p>
+            <h3>{{ idea.MinAssignees }}</h3><p>Min assigned</p>
             <h3>{{ idea.Voters.length }}</h3><p>Votes</p>
             <!-- <h3>{{ idea.comments.length }}</h3><p>Comments</p> -->
         </div>
         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-            <a ui-sref="default.edit({id: idea.id})">
+            <a ui-sref="default.edit({id: idea.Id})">
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary">Edit</button>
                 </div>

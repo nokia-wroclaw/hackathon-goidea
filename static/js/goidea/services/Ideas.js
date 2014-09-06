@@ -2,18 +2,13 @@ define(['./module'], function (services) {
     'use strict';
 
     services.factory('Ideas', function ($timeout, $http, $q, $rootScope) {
-        var data = [];
         var service = {
             getById: function (id, callback) {
-                var result = {};
-
-                if (_.isNumber(id)) {
-                    $timeout(function () {
-                        findById(id, result, callback);
-                    }, 25);
-                }
-
-                return result;
+              var result = {};
+              this.getIdeas().then(function(ideas){
+                findById(ideas, id, result, callback);
+              });
+              return result;
             },
             getIdeas: function () {
                 var deferred = $q.defer();
@@ -46,11 +41,12 @@ define(['./module'], function (services) {
         };
 
         /**
+         * @param {Array} data
          * @param {Number} id
          * @param {Object} result
          * @param {Function} callback
          */
-        var findById = function (id, result, callback) {
+        var findById = function (data, id, result, callback) {
             var idea = _.find(data, function (item) {
                 return item.Id == id;
             });
