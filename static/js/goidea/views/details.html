@@ -27,7 +27,8 @@
             <span> {{ idea.Description }}</span>
             <div class="comments-container">
                 <h3>Comments</h3>
-                <idea-comment ng-repeat="comment in comments" comment="comment"/>
+                <idea-comment ng-repeat="comment in comments" comment="comment"></idea-comment>
+                <idea-add-comment idea="idea" comment="comment" on-save="onCommentSave"></idea-add-comment>
             </div>
         </div>
     </div>

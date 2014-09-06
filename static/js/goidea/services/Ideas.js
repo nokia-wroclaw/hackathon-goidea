@@ -2,7 +2,7 @@ define(['./module'], function (services) {
     'use strict';
 
     services.factory('Ideas', function ($timeout, $http, $q, $rootScope) {
-
+        var data = [];
         var service = {
             getById: function (id, callback) {
                 var result = {};
