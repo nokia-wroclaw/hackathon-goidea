@@ -1,8 +1,8 @@
 <div class="idea-comment img-rounded">
     <div class="idea-comment-head">
         <img src="static/images/user_avatar.png" class="user-avatar img-rounded"/>
-        <b>{{ comment.creator }}</b><br>
-        {{ comment.date }}
+        <b>{{ comment.User.Fullname }}</b><br>
+        {{ comment.CreationDate.replace('T', ' ').substring(0, 16) }}
     </div>
-    <span class="idea-comment-body">{{comment.comment}}</span>
+    <span class="idea-comment-body">{{comment.Body}}</span>
 </div>

@@ -26,38 +26,18 @@ define(['./module'], function(services) {
         });
       },
 
-      getCommentsForIdea : function(id, callback){
-        var result = [];
-
-        var filter = function(){
-          var comments = _.filter(data, function(item){
-            return item.ideaId === id;
-          });
-          result = _.union(result,comments);
-          if (_.isFunction(callback)) {
-            callback(result);
+      getCommentsForIdea : function(ideaId){
+        return $http.post('/api/comments', {
+          Idea:{
+            Id: ideaId
           }
-        };
-        filter();
-
-        return result;
+        }).then(function(resData){
+          return _.filter(resData.data, function(item){
+            return item.Idea.Id === ideaId;
+          });
+        });
       }
     };
-
-    var data = [{
-      id : 1,
-      ideaId: 1,
-      date: '10.10.2012',
-      creator: 'creator',
-      comment: 'Aha Aha Aha Aha'
-
-    }, {
-      id : 2,
-      ideaId: 1,
-      date: '10.10.2012',
-      creator: 'creator',
-      comment: 'Blal Bla bla'
-    }];
 
     return service;
   });

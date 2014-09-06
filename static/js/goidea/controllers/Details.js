@@ -13,7 +13,7 @@ define(['./module'], function(controllers) {
     };
 
     $scope.loadComments = function(){
-      Comments.getCommentsForIdea(parseInt($stateParams.id), function(comments){
+      Comments.getCommentsForIdea(parseInt($stateParams.id)).then(function(comments){
         $scope.comments = comments;
       });
     };
