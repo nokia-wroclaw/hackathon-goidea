@@ -1,7 +1,7 @@
 define(['./module'], function(controllers) {
   'use strict';
 
-  controllers.controller('Details', function($rootScope, $scope, $stateParams, Ideas, Comments) {
+  controllers.controller('Details', function($rootScope, $scope, $stateParams, Ideas, Comments, User) {
     $scope.idea = {};
     $scope.comments = [];
     $scope.comment = '';
@@ -17,6 +17,17 @@ define(['./module'], function(controllers) {
         $scope.comments = comments;
       });
     };
+
+    $scope.assign = function() {
+      User.getLogged().then(function (user) {
+        Ideas.assign(scope.idea, user);
+      });
+    };
+    $scope.vote = function() {
+      User.getLogged().then(function (user){
+        Ideas.vote(scope.idea, user);
+      });
+    }
 
     $scope.onCommentSave = function(){
       console.log($scope.comment);

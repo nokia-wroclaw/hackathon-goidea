@@ -34,10 +34,20 @@ define(['./module'], function (services) {
             },
             assign: function (idea, user) {
                 idea.Assignees = idea.Assignees || [];
-                idea.Assignees.push(user);
+                if(!_.contains(idea.Assignees, user)) {
+                  idea.Assignees.push(user);
+                  this.updateOrInsert(idea);
+                  $rootScope.$broadcast('ideas-updated');
+                }
+            },
+            vote: function (idea, user) {
+              idea.Voters = idea.Voters || [];
+              if(!_.contains(idea.Voters, user)) {
+                idea.Voters.push(user);
                 this.updateOrInsert(idea);
                 $rootScope.$broadcast('ideas-updated');
-            }
+              }
+          }
         };
 
         /**

@@ -16,7 +16,12 @@ define(['./module', 'require'], function(directives, require) {
             User.getLogged().then(function (user) {
                 Ideas.assign(scope.idea, user);
             });
-        }
+        };
+        scope.vote = function() {
+          User.getLogged().then(function (user){
+            Ideas.vote(scope.idea, user);
+          });
+        };
       }
     };
   });
