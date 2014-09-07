@@ -4,12 +4,6 @@ define(['./module'], function (services) {
   services.factory('User', function ($http, $q) {
     //ToDO Remember remove this
     var currentUser = {
-      "Id": 1,
-      "Key": "1",
-      "Username": "makapaka",
-      "Fullname": "Maka Paka",
-      "Mail": "makapaka@nightgarden.uk",
-      "Role": "ADMIN"
     };
 
     var service = {
