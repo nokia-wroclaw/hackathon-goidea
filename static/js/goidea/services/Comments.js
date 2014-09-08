@@ -4,8 +4,8 @@ define(['./module'], function(services) {
   services.factory('Comments', function($q, $http, User) {
 
     var service = {
-      insertCommentForIdea: function(ideaId, comment){
-        return User.getLogged().then(function(user){
+      insertCommentForIdea: function(ideaId, comment) {
+        return User.getLogged().then(function(user) {
           return {
             Body: comment,
             User: {
@@ -15,23 +15,23 @@ define(['./module'], function(services) {
               Id: ideaId
             }
           };
-        }).then(function(putData){
+        }).then(function(putData) {
           return $http.put('/api/comments', putData)
-            .success(function (comment) {
+            .success(function(comment) {
               return comment.data;
             })
-            .error(function () {
+            .error(function() {
               $q.reject();
             });
         });
       },
 
-      getCommentsForIdea : function(ideaId){
+      getCommentsForIdea: function(ideaId) {
         return $http.post('/api/comments', {
-          Filter:{
-            Idea: ''+ideaId
+          Filter: {
+            Idea: '' + ideaId
           }
-        }).then(function(resData){
+        }).then(function(resData) {
           return resData.data;
         });
       }

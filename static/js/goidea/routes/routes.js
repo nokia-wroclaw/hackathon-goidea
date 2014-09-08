@@ -1,9 +1,9 @@
 define(['angular', '../namespace', 'require', 'ui-router', 'ui.calendar'],
-  function (angular, namespace, require) {
+  function(angular, namespace, require) {
     'use strict';
 
     return angular.module(namespace + '.routes', ['ui.router', 'ui.calendar'])
-      .config(function ($stateProvider, $urlRouterProvider) {
+      .config(function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise("ideas");
         $stateProvider
           .state('default', {

@@ -14,13 +14,13 @@ define(['./module', 'require'], function(directives, require) {
       link: function(scope, element, attrs) {
         scope.progress = (scope.idea.Assignees || []).length / scope.idea.MinAssignees * 100;
         scope.assign = function() {
-            User.getLogged().then(function (user) {
-                Ideas.assign(scope.idea, user);
-            });
+          User.getLogged().then(function(user) {
+            Ideas.assign(scope.idea, user);
+          });
         };
 
         scope.vote = function() {
-          User.getLogged().then(function (user){
+          User.getLogged().then(function(user) {
             Ideas.vote(scope.idea, user);
           });
         };

@@ -1,49 +1,51 @@
-define(['./module'], function (services) {
+define(['./module'], function(services) {
   'use strict';
 
-  services.factory('User', function ($http, $q) {
+  services.factory('User', function($http, $q) {
     //ToDO Remember remove this
-    var currentUser = {
-    };
+    var currentUser = {};
 
     var service = {
-      authenticate: function (username, password) {
+      authenticate: function(username, password) {
         var deffered = $q.defer();
-        $http.post('/auth', {Username: username, Password: password})
-          .success(function () {
+        $http.post('/auth', {
+          Username: username,
+          Password: password
+        })
+          .success(function() {
             deffered.resolve();
           })
-          .error(function () {
+          .error(function() {
             deffered.resolve();
           });
         return deffered.promise;
       },
-      isLoggedIn : function(){
+      isLoggedIn: function() {
         var deffered = $q.defer();
-        service.getLogged().then(function(){
+        service.getLogged().then(function() {
           deffered.resolve(true);
-        },function(){
+        }, function() {
           deffered.resolve(false);
         });
 
         return deffered.promise;
       },
-      getLogged: function () {
+      getLogged: function() {
         var deffered = $q.defer();
-        if (!_.isEmpty(currentUser)){
+        if (!_.isEmpty(currentUser)) {
           deffered.resolve(currentUser);
         }
         $http.get('/auth', {})
-          .success(function (fetchedUser) {
+          .success(function(fetchedUser) {
             currentUser = fetchedUser;
             deffered.resolve(currentUser);
           })
-          .error(function () {
+          .error(function() {
             deffered.reject();
           });
         return deffered.promise;
       },
-      logOutUser : function(){
+      logOutUser: function() {
         //reset cookie
         currentUser = {};
       }

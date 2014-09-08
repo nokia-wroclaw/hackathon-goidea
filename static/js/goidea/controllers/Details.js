@@ -7,20 +7,20 @@ define(['./module'], function(controllers) {
     $scope.comment = '';
     $scope.user = {};
 
-    $scope.loadUser = function(){
-      User.getLogged().then(function(user){
+    $scope.loadUser = function() {
+      User.getLogged().then(function(user) {
         $scope.user = user;
       });
     };
 
-    $scope.loadIdea = function(){
-      Ideas.getById(parseInt($stateParams.id), function(idea){
+    $scope.loadIdea = function() {
+      Ideas.getById(parseInt($stateParams.id), function(idea) {
         $scope.idea = idea;
       });
     };
 
-    $scope.loadComments = function(){
-      Comments.getCommentsForIdea(parseInt($stateParams.id)).then(function(comments){
+    $scope.loadComments = function() {
+      Comments.getCommentsForIdea(parseInt($stateParams.id)).then(function(comments) {
         $scope.comments = comments;
       });
     };
@@ -32,9 +32,9 @@ define(['./module'], function(controllers) {
       Ideas.vote($scope.idea, $scope.user);
     };
 
-    $scope.onCommentSave = function(){
+    $scope.onCommentSave = function() {
       console.log($scope.comment);
-      Comments.insertCommentForIdea($scope.idea.Id, $scope.comment).then(function(){
+      Comments.insertCommentForIdea($scope.idea.Id, $scope.comment).then(function() {
         $scope.loadComments();
       });
       $scope.comment = '';
