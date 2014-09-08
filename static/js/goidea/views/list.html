@@ -4,7 +4,7 @@
 </div>
 <div class="row container-fluid" ng-controller="IdeasList">
   <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-    <single-idea ng-repeat="idea in ideas" idea="idea"/>
+    <single-idea ng-repeat="idea in ideas" idea="idea" user="user"/>
   </div>
   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" ng-controller="Calendar">
         <div class="goidea-calendar">

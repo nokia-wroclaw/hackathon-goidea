@@ -7,7 +7,8 @@ define(['./module', 'require'], function(directives, require) {
       templateUrl: require.toUrl('./../views/templates/singleIdea.html'),
       replace: true,
       scope: {
-        idea: '='
+        idea: '=',
+        user: '='
       },
 
       link: function(scope, element, attrs) {
@@ -17,6 +18,7 @@ define(['./module', 'require'], function(directives, require) {
                 Ideas.assign(scope.idea, user);
             });
         };
+
         scope.vote = function() {
           User.getLogged().then(function (user){
             Ideas.vote(scope.idea, user);

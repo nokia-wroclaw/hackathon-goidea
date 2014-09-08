@@ -12,13 +12,13 @@
             <!-- <h3>{{ idea.comments.length }}</h3><p>Comments</p> -->
         </div>
         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-            <a ui-sref="default.edit({id: idea.Id})">
+            <a ng-if="user.Id && user.Id === idea.Creator.Id" ui-sref="default.edit({id: idea.Id})">
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary">Edit</button>
                 </div>
             </a>
-            <img ng-src="static/images/assign.png" ng-click="assign()" tooltip-placement="right" tooltip-html-unsafe="<h4>Assign me!</h4>" class="assign-vote-icons"/>
-            <img ng-src="static/images/vote-icon.png" ng-click="vote()" tooltip-placement="right" tooltip-html-unsafe="<h4>Take a vote</h4>" class="assign-vote-icons"/>
+            <img ng-if="user.Id" ng-src="static/images/assign.png" ng-click="assign()" tooltip-placement="right" tooltip-html-unsafe="<h4>Assign me!</h4>" class="assign-vote-icons"/>
+            <img ng-if="user.Id" ng-src="static/images/vote-icon.png" ng-click="vote()" tooltip-placement="right" tooltip-html-unsafe="<h4>Take a vote</h4>" class="assign-vote-icons"/>
         </div>
     </div>
     <div class="row">

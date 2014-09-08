@@ -5,6 +5,13 @@ define(['./module'], function(controllers) {
     $scope.idea = {};
     $scope.comments = [];
     $scope.comment = '';
+    $scope.user = {};
+
+    $scope.loadUser = function(){
+      User.getLogged().then(function(user){
+        $scope.user = user;
+      });
+    };
 
     $scope.loadIdea = function(){
       Ideas.getById(parseInt($stateParams.id), function(idea){
@@ -19,15 +26,11 @@ define(['./module'], function(controllers) {
     };
 
     $scope.assign = function() {
-      User.getLogged().then(function (user) {
-        Ideas.assign($scope.idea, user);
-      });
+      Ideas.assign($scope.idea, $scope.user);
     };
     $scope.vote = function() {
-      User.getLogged().then(function (user){
-        Ideas.vote($scope.idea, user);
-      });
-    }
+      Ideas.vote($scope.idea, $scope.user);
+    };
 
     $scope.onCommentSave = function(){
       console.log($scope.comment);
@@ -37,6 +40,7 @@ define(['./module'], function(controllers) {
       $scope.comment = '';
     };
 
+    $scope.loadUser();
     $scope.loadIdea();
     $scope.loadComments();
   });
