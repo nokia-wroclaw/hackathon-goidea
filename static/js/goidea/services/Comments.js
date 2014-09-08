@@ -28,13 +28,11 @@ define(['./module'], function(services) {
 
       getCommentsForIdea : function(ideaId){
         return $http.post('/api/comments', {
-          Idea:{
-            Id: ideaId
+          Filter:{
+            Idea: ''+ideaId
           }
         }).then(function(resData){
-          return _.filter(resData.data, function(item){
-            return item.Idea.Id === ideaId;
-          });
+          return resData.data;
         });
       }
     };
