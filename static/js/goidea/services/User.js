@@ -13,25 +13,23 @@ define(['./module'], function (services) {
             deffered.resolve();
           })
           .error(function () {
-            deffered.resolve();
+            deffered.reject();
           });
         return deffered.promise;
       },
       getLogged: function () {
-        var deffered = $q.defer();
-        if (currentUser != undefined) {
+        if (currentUser !== undefined) {
+          var deffered = $q.defer();
           deffered.resolve(currentUser);
+          return deffered.promise;
         } else {
-          $http.get('/auth', {})
-            .success(function (fetchedUser) {
-              currentUser = fetchedUser;
-              deffered.resolve(currentUser);
-            })
-            .error(function () {
-              deffered.reject();
+          return $http.get('/auth', {})
+            .then(function (fetchedUser) {
+              return (currentUser = fetchedUser;
+            }, function () {
+              return (currentUser = null);
             });
         }
-        return deffered.promise;
       },
       logOut: function () {
         //reset cookie
