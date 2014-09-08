@@ -10,10 +10,10 @@ define(['angular',
     'use strict';
 
     return angular.module(namespace, [
-        namespace + '.controllers',
-        namespace + '.directives',
-        namespace + '.services',
-        namespace + '.routes',
-        'ui.bootstrap'
+      namespace + '.controllers',
+      namespace + '.directives',
+      namespace + '.services',
+      namespace + '.routes',
+      'ui.bootstrap'
     ]).run(function() {});
   });

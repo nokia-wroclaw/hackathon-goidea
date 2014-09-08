@@ -1,11 +1,11 @@
-define(['./module', 'require'], function (controllers, require) {
+define(['./module', 'require'], function(controllers, require) {
   'use strict';
 
 
-  controllers.controller('Navbar', function ($rootScope, $scope, User) {
+  controllers.controller('Navbar', function($rootScope, $scope, User) {
     $scope.isLogged = false;
     //attempt to log in user on init
-    User.getLogged().then(function (user) {
+    User.getLogged().then(function(user) {
       $scope.user = user;
       $scope.isLogged = true;
     });
@@ -14,21 +14,21 @@ define(['./module', 'require'], function (controllers, require) {
      * Logs in a user
      * @param {Object} credentials
      */
-    $scope.logIn = function (credentials) {
+    $scope.logIn = function(credentials) {
       $scope.disabled = true;
       $scope.loginError = false;
 
-      var authFail = function () {
+      var authFail = function() {
         $scope.isLogged = false;
         $scope.loginError = true;
         $scope.disabled = false;
       };
 
-      var getUser = function () {
+      var getUser = function() {
         return User.getLogged();
       };
 
-      var authSuccess = function (user) {
+      var authSuccess = function(user) {
         $scope.isLogged = true;
         $scope.disabled = false;
         $scope.user = user;
@@ -42,7 +42,7 @@ define(['./module', 'require'], function (controllers, require) {
     /**
      * Logs out a user
      */
-    $scope.logOut = function () {
+    $scope.logOut = function() {
       $scope.isLogged = false;
       $scope.user = null;
       User.logOut();

@@ -12,8 +12,7 @@ define(['./module', 'require'], function(directives, require) {
         onSave: '='
       },
 
-      link: function(scope, element, attrs) {
-      }
+      link: function(scope, element, attrs) {}
     };
   });
 });

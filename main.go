@@ -18,7 +18,7 @@ func init() {
 
 func main() {
 	// Usage: go run main.go orm syncdb -force=1
-	// orm.RunCommand()
+	orm.RunCommand()
 
 	beego.Run()
 }
