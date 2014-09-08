@@ -2,9 +2,8 @@ define(['./module'], function (services) {
   'use strict';
 
   services.factory('User', function ($http, $q) {
-    //ToDO Remember remove this
-    var currentUser = {
-    };
+
+    var currentUser;
 
     var service = {
       authenticate: function (username, password) {
@@ -18,34 +17,26 @@ define(['./module'], function (services) {
           });
         return deffered.promise;
       },
-      isLoggedIn : function(){
-        var deffered = $q.defer();
-        service.getLogged().then(function(){
-          deffered.resolve(true);
-        },function(){
-          deffered.resolve(false);
-        });
-
-        return deffered.promise;
-      },
       getLogged: function () {
         var deffered = $q.defer();
-        if (!_.isEmpty(currentUser)){
+        if (currentUser != undefined) {
           deffered.resolve(currentUser);
+        } else {
+          $http.get('/auth', {})
+            .success(function (fetchedUser) {
+              currentUser = fetchedUser;
+              deffered.resolve(currentUser);
+            })
+            .error(function () {
+              deffered.reject();
+            });
         }
-        $http.get('/auth', {})
-          .success(function (fetchedUser) {
-            currentUser = fetchedUser;
-            deffered.resolve(currentUser);
-          })
-          .error(function () {
-            deffered.reject();
-          });
         return deffered.promise;
       },
-      logOutUser : function(){
+      logOut: function () {
         //reset cookie
-        currentUser = {};
+        currentUser = undefined;
+        $http.delete('/auth', {});
       }
     };
 

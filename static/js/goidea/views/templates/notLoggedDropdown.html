@@ -1,21 +1,19 @@
 <ul class='nav navbar-nav navbar-right'>
     <li class="dropdown">
-        <a class="dropdown-toggle" href='#' data-toggle='dropdown'>
+        <a class="dropdown-toggle" href='#'>
             Login
         </a>
         <ul class="dropdown-menu" role='menu'>
-            <li>
+            <li class="login-dropdown">
                 <p class="text-danger" ng-hide="!loginError">Wrong password or username</p>
                 <p class="text-success" ng-hide="!loginSuccess">User logged in!</p>
                 <form name="loginForm"
                       ng-submit="logIn(credentials)" novalidate>
-                    <div class="form-group">
-                        <label for="username">Username</label>
+                    <div class="form-inline">
                         <input class="form-control" placeholder="Username" type="text" id="username"
                                ng-model="credentials.username" ng-disabled="disabled">
                     </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
+                    <div class="form-inline">
                         <input class="form-control" placeholder="Password" type="password" id="password"
                            ng-model="credentials.password" ng-disabled="disabled">
                     </div>

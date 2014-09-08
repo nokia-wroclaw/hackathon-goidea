@@ -6,19 +6,17 @@
             </a>
             <span class="brand-text">GO IDEA</span>
         </div>
-        <div class="navbar-class callapse navbar-right">
-            <ul class="nav navbar-nav navbar-right" ng-controller="Navbar">
-                <div ng-switch on="isLogged">
-                    <div ng-switch-when="true">
-                        <div ng-include="loggedTemplateUri">
-                        </div>
-                    </div>
-                    <div ng-switch-when="false">
-                        <div ng-include="notLoggedTemplateUri">
-                        </div>
+        <div class="" ng-controller="Navbar">
+            <div ng-switch on="isLogged">
+                <div ng-switch-when="true">
+                    <div ng-include="loggedTemplateUri">
                     </div>
                 </div>
-            </ul>
+                <div ng-switch-when="false">
+                    <div ng-include="notLoggedTemplateUri">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
