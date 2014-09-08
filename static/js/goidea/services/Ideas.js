@@ -5,10 +5,17 @@ define(['./module'], function (services) {
         var service = {
             getById: function (id, callback) {
               var result = {};
-              this.getIdeas().then(function(ideas){
-                findById(ideas, id, result, callback);
+              $http.post('/api/ideas', {
+                "Filter" : {
+                  "Id": ''+id
+                }
+              }).success(function(idea){
+                idea = _.first(idea);
+                idea.Assignees = idea.Assignees || [];
+                idea.Comments = idea.Comments || [];
+                idea.Voters = idea.Voters || [];
+                callback(idea);
               });
-              return result;
             },
             getIdeas: function () {
                 var deferred = $q.defer();
@@ -53,22 +60,6 @@ define(['./module'], function (services) {
                 $rootScope.$broadcast('ideas-updated');
               }
           }
-        };
-
-        /**
-         * @param {Array} data
-         * @param {Number} id
-         * @param {Object} result
-         * @param {Function} callback
-         */
-        var findById = function (data, id, result, callback) {
-            var idea = _.find(data, function (item) {
-                return item.Id == id;
-            });
-            _.extend(result, idea);
-            if (_.isFunction(callback)) {
-                callback(result);
-            }
         };
 
         return service;
