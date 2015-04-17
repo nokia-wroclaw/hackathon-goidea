@@ -25,7 +25,7 @@ define(['./module'], function (services) {
         } else {
           return $http.get('/auth', {})
             .then(function (fetchedUser) {
-              return (currentUser = fetchedUser;
+              return (currentUser = fetchedUser);
             }, function () {
               return (currentUser = null);
             });
